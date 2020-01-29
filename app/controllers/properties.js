@@ -1,27 +1,25 @@
-const Properties = {
-    index: {
-      handler: function(request, h) {
-        return h.file('./app/views/main.html');
-      }
-    },
+'use strict';
 
-  signup: {
+const Properties = {
+  home: {
     handler: function(request, h) {
-      return h.file('./app/views/signup.html');
+      return h.view('home', { title: 'Add a Property' });
     }
   },
+  report: {
+    handler: function(request, h) 
+    {      return h.view('report', { title: 'Properties so far', donations: this.donations });
+      }  } ,
 
-  login: {
+  property: {
     handler: function(request, h) {
-      return h.file('./app/views/login.html');
+      const data = request.payload;
+      this.properties.push(data);
+      return h.redirect('/report');
     }
-  }
-};
+  }  
 
-  
- 
+    
+    };
 
-
-
-  
-  module.exports = Properties;
+module.exports = Properties;

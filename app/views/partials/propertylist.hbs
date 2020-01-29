@@ -1,0 +1,25 @@
+<section class="ui raised segment">
+  <div class="ui grid">
+    <aside class="six wide column">
+      <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1580297582/simple-grid-splash.jpg" class="ui medium image">
+    </aside>
+    <article class="eight wide column">
+      <table class="ui celled table segment">
+        <thead>
+          <tr>
+            <th>Eircode</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each properties}}
+            <tr>
+              <td> {{eircode}} </td>
+              <td> {{address}} </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </article>
+  </div>
+</section>

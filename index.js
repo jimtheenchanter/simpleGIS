@@ -7,6 +7,10 @@ const server = Hapi.server({
   host: 'localhost'
 });
 
+server.bind({
+  users: [],
+  properties: [],
+});
 
 // start the synchronous server
 async function init() {
@@ -20,6 +24,9 @@ async function init() {
     },
     relativeTo: __dirname,
     path: './app/views',
+    layoutPath: './app/views/layouts',
+    partialsPath: './app/views/partials',
+    layout: true,
     isCached: false
   });
  

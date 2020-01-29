@@ -1,0 +1,66 @@
+<section class="ui raised segment">
+  <div class="ui grid ">
+    <div class="ui form six wide column">
+      <div class="ui stacked segment">
+        <form action="/property" method="POST">
+                   <input type="hidden" name="eircode">
+         
+                    <div class="field">
+                        <label>Eircode</label>
+                        <input type="text" name="eircode" >
+                    </div>
+
+                     <div class="ui header">Geo Location</div>
+                <div class="ui two fields">
+                    <div class="field">
+                        <div class="ui text box">
+                            <label>Longitude </label>
+                            <input type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="8">
+                        </div>
+                    </div>
+
+
+                    <div class="field">
+                        <div class="ui text box">
+                            <label>Latitude </label>
+                            <input type="text" id="lat" name="lat" placeholder="-0.000000" accept="integer/*" maxlength="8">
+                        </div>
+                    </div>
+            </div>
+
+                    <div class="field">
+                        <label>Address</label>
+                        <input type="text" rows="2" name="address" value>
+                    </div>
+
+          </div>
+          <div class="grouped inline fields">
+              <label>Resident/and or homeownwer willing to get connected to proposed FTTH network?</label>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="method" value="yes">
+                <label>Yes </label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="method" value="no">
+                <label>No</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="method" value="not-sure">
+                <label>Not Sure</label>
+              </div>
+            </div>
+          </div>
+          <button class="ui blue submit button">Add Marker</button>
+        </form>
+      </div>
+    </div>
+    <aside class="six wide column">
+      <img src="images/homer4.jpeg" class="ui medium image">
+    </aside>
+  </div>
+</section>

@@ -1,9 +1,19 @@
+'use strict';
+
+const Accounts = require('./app/controllers/accounts');
 const Properties = require('./app/controllers/properties');
 
 module.exports = [
-{ method: 'GET', path: '/', config: Properties.index },
-{ method: 'GET', path: '/signup', config: Properties.signup },
-{ method: 'GET', path: '/login', config: Properties.login },
+{ method: 'GET', path: '/', config: Accounts.index },
+{ method: 'GET', path: '/signup', config: Accounts.showSignup },
+{ method: 'GET', path: '/login', config: Accounts.showLogin },
+{ method: 'GET', path: '/logout', config: Accounts.logout },
+{ method: 'POST', path: '/signup', config: Accounts.signup },
+{ method: 'POST', path: '/login', config: Accounts.login },
+// { method: 'GET', path: '/', config: Properties.index },
+{ method: 'POST', path: '/property', config: Properties.property },
+{ method: 'GET', path: '/home', config: Properties.home },
+{ method: 'GET', path: '/report', config: Properties.report },
 
 
 {    method: 'GET',

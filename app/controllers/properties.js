@@ -1,27 +1,38 @@
 'use strict';
 
+const Property = require('../models/property')
+
 const Properties = {
   home: {
         handler: function(request, h) {
       return h.view('home', { title: 'Add a Property' });
     }
   },
+
   report: {
-    handler: function(request, h) 
-    {      return h.view('report', { title: 'Properties so far', properties: this.properties });
-      }  } ,
+    handler: async function(request, h) {
+      const donations = await Property.find()
+      return h.view('report', {
+        title: 'Properties to Date',
+        properties: properties
+      });
+    }
+  },
 
   property: {
-    handler: function(request, h) {
+    handler: async function(request, h) {
       const data = request.payload;
-      var agentEmail = request.auth.credentials.id; //recover email from cookie
-      data.agent = this.users[agentEmail]; // look up DB to recover users deails
-      this.properties.push(data);
+      const newProperty = new Property({
+        eircode: data.eircode,
+        long: data.long,
+        lat: data.lat,
+        address: data.address,
+        method: data.values
+      });
+      await newProperty.save();
       return h.redirect('/report');
     }
-  }  
-
-    
-    };
+  }
+};
 
 module.exports = Properties;

@@ -1,0 +1,70 @@
+  <section class = "ui raised segment">
+  <div id="mapid"></div>
+   <style>
+        #mapid {
+            height: 600px;
+            width: 600px;
+        }
+    </style>
+   {{!-- <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1580731611/BBFP/Node1_85Properties.jpg">   --}}
+  <script type="text/javascript">
+
+        var mymap = L.map('mapid').setView([52.345944, -7.321977], 15);
+     
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
+        {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+        maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
+}).addTo(mymap);
+
+
+function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+        } 
+
+
+var latlngs2 = [[52.35039323647337, -7.326826106457664],
+[52.35059069755589, -7.327548405418206],
+[52.35084412837997, -7.329333127625257],
+[52.35111284004537, -7.330986654985202], 
+[52.35132184275879, -7.332343066936341],
+[52.35133253859386, -7.332681695004047],
+[52.351321096452, -7.332784109406337],
+[52.3508071472338, -7.332933052120128],
+[52.35069704362221, -7.332666725108664],
+[52.346987756035, -7.334818945421741],
+[52.34805229586723, -7.332662494120954],
+[52.34826928488987,-7.33126300934268],
+[52.34826928488987, -7.33126300934268],
+[52.34922984327213,	-7.328600285922605],
+[52.35008075329776, -7.327034313079017],
+[52.35024913180711, -7.326892276903236],
+[52.35039323647337, -7.326826106457664]
+];
+var node2 = L.polygon(latlngs2, {color: 'red', title: 'node2'}).addTo(mymap);
+
+node2.bindPopup("Node Area 2")
+
+var latlngs3 = [
+[52.35039323647337, -7.337501632484155], 
+[52.35059069755589, -7.339488932027143],
+[52.35084412837997, -7.340541874586666],
+[52.35111284004537, -7.334809093593519],
+[52.35132184275879, -7.332662120291037],
+[52.35133253859386,  , -7.332912389178881],
+[52.35132109645285,      ,-7.332794332067534],
+[52.3508071472338,      , -7.337501632484155]
+];
+
+
+var node3 = L.polygon(latlngs3, {color: 'red', title: 'node3'}).addTo(mymap);
+  //add existing markers to maps
+{{#each properties}}
+        L.marker([{{long}}, {{lat}}]).addTo(map)
+               .bindPopup(
+                    '<h1>{{eircode}}</h1></br><p><strong>Long: </strong> {{Long}} </p><p><strong>Lat:</strong> {{lat}}</p>') 
+{{/each}}
+  </script>
+</section>

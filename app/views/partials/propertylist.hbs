@@ -8,7 +8,7 @@
         <thead>
           <tr>
             <th>Eircode</th>
-            <th>Address</th>
+            <th>GeoLocation</th>
             <th>Agent</th>
           </tr>
         </thead>
@@ -16,8 +16,8 @@
           {{#each properties}}
             <tr>
               <td> {{eircode}} </td>
-              <td> {{address}} </td>
-              <td> {{agent.firstName}} {{agent.lastName}} </td>
+              <td> {{long}}   </td>
+              <td> {{agent.firstName}} </td>
             </tr>
           {{/each}}
         </tbody>

@@ -1,31 +1,27 @@
 'use strict';
 
-require('dotenv').config();
-// const dotenv = require('dotenv');
-// const result = dotenv.config();
-// if (result.error) {
-//   console.log(result.error.message);
-//   process.exit(1);
-// }
+// require('dotenv').config();
+const dotenv = require('dotenv');
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
 const Hapi = require('@hapi/hapi');
 
 const server = Hapi.server({
-  port: 3000,
+  port: process.env.PORT || 3000,
   host: 'localhost'
 });
 
 require('./app/models/db');
 
-// server.bind({
-//   users: {},
-//   properties: []
-  
-// });
 
 // start the synchronous server
 async function init() {
 // only  start the server if the plugin is successfully loaded
 //  await server.register(require('hapi-auth-cookie'));
+//  await server.register(require('@hapi/boom'));
  await server.register(require('@hapi/cookie'));
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));

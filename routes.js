@@ -13,9 +13,9 @@ module.exports = [
 { method: 'GET', path: '/settings', config: Accounts.showSettings },
 { method: 'POST', path: '/settings', config: Accounts.updateSettings },
 // { method: 'GET', path: '/', config: Properties.index },
-{ method: 'POST', path: '/property', config: Properties.property },
 { method: 'GET', path: '/home', config: Properties.home },
 { method: 'GET', path: '/report', config: Properties.report },
+{ method: 'POST', path: '/property', config: Properties.property },
 
 // routes for static pages
 

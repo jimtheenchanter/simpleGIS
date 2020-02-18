@@ -9,6 +9,10 @@ launch app:
 `node index.js`
 navigate
 
+### Handlebars: Access has been denied error
+SOlution: INstall deve dependency
+npm i -D handlebars@4.5.0
+
 https://secure-earth-93268.herokuapp.com/ | https://git.heroku.com/secure-earth-93268.git
 
 Joi
@@ -24,3 +28,6 @@ http://maptimeboston.github.io/leaflet-intro/
 
 mongo Stitch Android
 https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877
+
+How simplicity will Save GIS
+https://vimeo.com/106112939

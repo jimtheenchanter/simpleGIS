@@ -23,9 +23,11 @@
               <td> {{long}}   </td>
               <td> {{lat}}   </td>
               <td> {{agent.firstName}} {{agent.lastName}} </td>
-                <td> {{#if show_delete}}
+                <td> 
+                  {{#if show_delete}}
                         <a href="/deleteproperty/{{id}}" ><button  class="ui submit button">Del</button>  </a>
-                        {{/if}} </td>
+                        {{/if}}
+                         </td>
             </tr>
           {{/each}}
         </tbody>

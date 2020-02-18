@@ -1,5 +1,4 @@
 {
-  
   "name": "simplegis",
   "version": "1.0.0",
   "description": "Simple GIS solution for small FTTH networks",
@@ -36,15 +35,16 @@
     "@hapi/joi": "^17.1.0",
     "@hapi/vision": "^6.0.0",
     "dotenv": "^8.2.0",
-    "handlebars": "^4.7.2",
     "hapi": "^18.1.0",
     "hapi-auth-cookie": "^10.0.0",
     "inert": "^5.1.3",
     "leaflet": "^1.6.0",
+    "mapbox-gl": "^1.7.0",
     "mongoose": "^5.8.10",
     "vision": "^5.4.4"
   },
   "devDependencies": {
+    "handlebars": "^4.5.0",
     "prettier": "^1.19.1"
   },
   "prettier": {

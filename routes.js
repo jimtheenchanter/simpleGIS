@@ -15,7 +15,8 @@ module.exports = [
 // { method: 'GET', path: '/', config: Properties.index },
 { method: 'GET', path: '/home', config: Properties.home },
 { method: 'GET', path: '/report', config: Properties.report },
-{ method: 'POST', path: '/property', config: Properties.property },
+{ method: 'POST', path: '/property', config: Properties.addproperty },
+{ method: 'POST', path: '/deleteproperty/{id}', config: Properties.deleteproperty },
 
 // routes for static pages
 

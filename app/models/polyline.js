@@ -3,10 +3,8 @@
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
-const propertySchema = new Schema({
-  eircode: String,
-  long: Number,
-  lat: Number,
+const polylineSchema = new Schema({
+  latlng: [],
   agent: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -14,4 +12,4 @@ const propertySchema = new Schema({
  
 });
 
-module.exports = Mongoose.model('Property', propertySchema);
+module.exports = Mongoose.model('Polyline', polylineSchema);

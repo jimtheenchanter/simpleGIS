@@ -1,6 +1,6 @@
 'use strict';
 
-const Boom = require('boom');
+const Boom = require('@hapi/boom');
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
@@ -15,15 +15,15 @@ userSchema.statics.findByEmail = function(email) {
     return this.findOne({ email : email});
   };
   
-//   // new method
-// userSchema.methods.findById = function(id) {
+  // new method
+// userSchema.statics.findById = function(id) {
 //   return this.findOne({id : id})
 // }
   
   userSchema.methods.comparePassword = function(userPassword) {
     const isMatch = this.password === userPassword;
     if (!isMatch) {
-      throw new Boom('Password mismatch');
+      throw Boom('Password mismatch');
     }
     return this;
   };

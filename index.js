@@ -11,7 +11,8 @@ const Hapi = require('@hapi/hapi');
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
-  host: 'localhost'
+  // port: 3000,
+  // host: 'localhost'
 });
 
 require('./app/models/db');
@@ -40,7 +41,7 @@ async function init() {
   });
   
 
-  server.auth.strategy('session', 'cookie', {
+  server.auth.strategy('standard', 'cookie', {
     cookie: {
     password: process.env.cookie_password,
     name: process.env.cookie_name,    
@@ -54,7 +55,7 @@ async function init() {
   
   server.auth.default({
     mode: 'required',
-    strategy: 'session',
+    strategy: 'standard',
   });
 
   server.route(require('./routes'));

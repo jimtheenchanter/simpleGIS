@@ -1,15 +1,19 @@
 <section class="ui raised segment">
   <div class="ui grid">
-    <aside class="six wide column">
-      <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1580297582/simple-grid-splash.jpg" class="ui medium image">
-    </aside>
-    <article class="eight wide column">
+    <aside class="sixteen wide column">
+       {{>map}}
+  
+ 
+
+    
       <table class="ui celled table segment">
         <thead>
           <tr>
             <th>Eircode</th>
-            <th>GeoLocation</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
             <th>Agent</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -17,11 +21,17 @@
             <tr>
               <td> {{eircode}} </td>
               <td> {{long}}   </td>
-              <td> {{agent.firstName}} </td>
+              <td> {{lat}}   </td>
+              <td> {{agent.firstName}} {{agent.lastName}} </td>
+                <td> 
+                  {{#if show_delete}}
+                        <a href="/deleteproperty/{{id}}" ><button  class="ui submit button">Del</button>  </a>
+                        {{/if}}
+                         </td>
             </tr>
           {{/each}}
         </tbody>
       </table>
-    </article>
+     </aside>
   </div>
 </section>

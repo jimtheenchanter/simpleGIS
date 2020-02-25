@@ -11,6 +11,7 @@ const propertySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   }
+ 
 });
 
 module.exports = Mongoose.model('Property', propertySchema);

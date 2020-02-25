@@ -1,8 +1,9 @@
 'use strict';
 
-const Boom = require('boom');
+const Boom = require('@hapi/boom');
 const User = require('../models/user');
-const Joi = require('joi')
+const Joi = require('@hapi/joi');
+
 
 const Accounts = {
   index: {
@@ -11,27 +12,32 @@ const Accounts = {
       return h.view('main', { title: 'Welcome to SimpleGIS' });
     }
   },
+
   showSignup: {
     auth: false,
     handler: function(request, h) {
       return h.view('signup', { title: 'Sign up for SimpleGIS' });
     }
   },
+
   signup: {
     auth: false,
     // validate: {
-    //   payload: {
+    //   payload: 
+    //     {
     //     firstName: Joi.string().required(),
     //     lastName: Joi.string().required(),
     //     email: Joi.string()
     //       .email()
-    //       .required(),
+    //       .required(), 
     //     password: Joi.string().required()
-    //   },
-    //   options: {
+    //     }
+    //   ,
+    // options: {
     //     abortEarly: false,
     //   },
-    //   failAction: function(request, h, error) {
+
+    // failAction: function(request, h, error) {
     //     return h
     //       .view('signup', {
     //         title: 'Sign up error',
@@ -39,15 +45,16 @@ const Accounts = {
     //       })
     //       .takeover()
     //       .code(400);
-    //   }
-    // },
+    //       }
+    //     },
+
     handler: async function(request, h) {
       try {
         const payload = request.payload;
         let user = await User.findByEmail(payload.email);
         if (user) {
           const message = 'Email address is already registered';
-          throw new Boom(message);
+          throw Boom(message);
         }
         const newUser = new User({
           firstName: payload.firstName,
@@ -70,35 +77,36 @@ const Accounts = {
       return h.view('login', { title: 'Login to Simple GIS' });
     }
   },
+
   login: {
     auth: false,
-    // validate: {
+    //  validate: {
     //   payload: {
-    //     email: Joi.string()
+    //      email: Joi.string()
     //       .email()
-    //       .required(),
-    //     password: Joi.string().required()
-    //   },
-    //   options: {
-    //     abortEarly: false
-    //   },
-    //   failAction: function(request, h, error) {
-    //     return h
-    //       .view('login', {
-    //         title: 'Sign in error',
+    //        .required(),
+    //      password: Joi.string().required()
+    //    },
+    //    options: {
+    //      abortEarly: false
+    //  },
+    //    failAction: function(request, h, error) {
+    //      return h
+    //        .view('login', {
+    //          title: 'Sign in error',
     //         errors: error.details
-    //       })
-    //       .takeover()
-    //       .code(400);
-    //   }
-    // },
+    //     })
+    //        .takeover()
+    //        .code(400);
+    //    }
+    //  },
     handler: async function(request, h) {
       const { email, password } = request.payload;
       try {
         let user = await User.findByEmail(email);
         if (!user) {
           const message = 'Email address is not registered';
-          throw new Boom(message);
+          throw Boom.message(message);
         }
         user.comparePassword(password);
         request.cookieAuth.set({ id: user.id });
@@ -115,7 +123,9 @@ const Accounts = {
       try {
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
-        return h.view('settings', { title: 'Account Settings', user: user });
+        return h.view('settings', { 
+          title: 'Account Settings', 
+          user: user });
       } catch (err) {
         return h.view('login', { errors: [{ message: err.message }] });
       }
@@ -155,8 +165,8 @@ const Accounts = {
         user.email = userEdit.email;
         user.password = userEdit.password;
         await user.save();
-    
-        return h.redirect('/main');
+          console.log("Update successful")
+        return h.redirect('/settings');
 
       } catch (err) {
         return h.view('main', { errors: [{ message: err.message }] });
@@ -170,7 +180,7 @@ const Accounts = {
       request.cookieAuth.clear(); 
       return h.redirect('/');
     }
-  }
-};
+   }
+  };
 
 module.exports = Accounts;

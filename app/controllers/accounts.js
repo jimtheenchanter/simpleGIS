@@ -64,7 +64,7 @@ const Accounts = {
         });
         user = await newUser.save();
         request.cookieAuth.set({ id: user.id });
-        return h.redirect('/home');
+        return h.redirect('/login');
       } catch (err) {
         return h.view('signup', { errors: [{ message: err.message }] });
       }

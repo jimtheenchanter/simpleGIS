@@ -34,3 +34,9 @@ https://vimeo.com/106112939
 
 Leaflet Mapbox Polyline
 https://docs.mapbox.com/mapbox.js/example/v1.0.0/leaflet-draw/
+
+Node MVC
+https://www.sitepoint.com/node-js-mvc-application/
+
+KML in google maps
+https://developers.google.com/maps/documentation/javascript/kml

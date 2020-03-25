@@ -1,8 +1,10 @@
+{{> mainmenu _id="editproperty" }}
+
 <section class="ui raised segment">
   <div class="ui grid ">
     <div class="ui header">
       <h2>
-        Add a premises
+        Edit a premises
       </h2>
       <p>
        <ol>
@@ -11,16 +13,17 @@
         <li>Enter Longiture and Latitude </li>
         <li>Click 'Add' </li>
       </ol>  
+        
       </p>
     </div>
     <div class="ui form">
      <div class="ui stacked segment">
-        <form action="/property" method="POST">
+        <form action="/editproperty" method="POST">
                    {{!-- <input type="hidden" name="property"> --}}
          
                     <div class="field">
                         <label>Eircode</label>
-                        <input type="text" id="eircode" name="eircode" >
+                        <input value="{{property.eircode}}" type="text"  name="eircode" >
                     </div>
 
                    <div class="ui header">Geo Location</div>
@@ -29,14 +32,14 @@
                      <div class="field">
                          <div class="ui text box">
                             <label>Longitude </label>
-                            <input type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20">
+                            <input value="{{property.long}}" type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20">
                         </div>
                     </div>
 
                      <div class="field">
                         <div class="ui text box">
                             <label>Latitude </label>
-                            <input type="text" id="lat" name="lat" placeholder="0.000000" accept="integer/*" maxlength="20">
+                            <input value="{{property.lat}}" type="text" id="lat" name="lat" placeholder="0.000000" accept="integer/*" maxlength="20">
                         </div>
                       </div>
 
@@ -47,7 +50,7 @@
                         <input type="text" id="address" rows="2" name="address" >
                     </div>
          --}}
-           <button class="ui blue submit button"> + Add </button>
+           <button class="ui blue submit button"> Save </button>
         </form>
       </div>
     </div>

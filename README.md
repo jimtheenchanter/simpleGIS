@@ -27,7 +27,8 @@ What Leaflet does: "Slippy" maps with tiled base layers, panning and zooming, an
 http://maptimeboston.github.io/leaflet-intro/
 
 mongo Stitch Android
-https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877
+https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877    
+
 
 How simplicity will Save GIS
 https://vimeo.com/106112939
@@ -40,3 +41,15 @@ https://www.sitepoint.com/node-js-mvc-application/
 
 KML in google maps
 https://developers.google.com/maps/documentation/javascript/kml
+
+User Permissions
+https://stackoverflow.com/questions/43080150/handlebars-and-node-js-if-user-then-show-log-in-button
+
+Node.js Session Management
+https://pomcor.com/2018/06/25/login-session-maintenance-in-node-js-using-express-and-handlebars/
+
+handlebars Built in Helper
+https://handlebarsjs.com/guide/builtin-helpers.html
+
+CRUD Mongoose
+https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34

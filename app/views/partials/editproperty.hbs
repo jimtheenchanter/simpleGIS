@@ -2,7 +2,7 @@
   <div class="ui grid ">
     <div class="ui header">
       <h2>
-        Add a premises
+        Edit a premises
       </h2>
       <p>
        <ol>
@@ -11,16 +11,17 @@
         <li>Enter Longiture and Latitude </li>
         <li>Click 'Add' </li>
       </ol>  
+        
       </p>
     </div>
     <div class="ui form">
      <div class="ui stacked segment">
-        <form action="/property" method="POST">
+        <form action="/editproperty" method="POST">
                    {{!-- <input type="hidden" name="property"> --}}
          
                     <div class="field">
                         <label>Eircode</label>
-                        <input type="text" id="eircode" name="eircode" >
+                        <input type="text" id="eircode" name="eircode" placeholder={{eircode}}>
                     </div>
 
                    <div class="ui header">Geo Location</div>

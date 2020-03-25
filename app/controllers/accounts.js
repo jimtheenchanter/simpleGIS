@@ -50,21 +50,21 @@ const Accounts = {
 
     handler: async function(request, h) {
       try {
-        const payload = request.payload;
-        let user = await User.findByEmail(payload.email);
-        if (user) {
+        const payload = request.payload; // accepts data from form
+        let user = await User.findByEmail(payload.email); //declares user
+        if (user) {  // check if user email already exists
           const message = 'Email address is already registered';
           throw Boom(message);
         }
-        const newUser = new User({
+        const newUser = new User({ //create new user based on user model
           firstName: payload.firstName,
           lastName: payload.lastName,
           email: payload.email,
           password: payload.password
         });
-        user = await newUser.save();
-        request.cookieAuth.set({ id: user.id });
-        return h.redirect('/login');
+        user = await newUser.save(); // save newuser data as user
+        request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
+        return h.redirect('/login'); // redirect to login screen
       } catch (err) {
         return h.view('signup', { errors: [{ message: err.message }] });
       }
@@ -80,38 +80,25 @@ const Accounts = {
 
   login: {
     auth: false,
-    //  validate: {
-    //   payload: {
-    //      email: Joi.string()
-    //       .email()
-    //        .required(),
-    //      password: Joi.string().required()
-    //    },
-    //    options: {
-    //      abortEarly: false
-    //  },
-    //    failAction: function(request, h, error) {
-    //      return h
-    //        .view('login', {
-    //          title: 'Sign in error',
-    //         errors: error.details
-    //     })
-    //        .takeover()
-    //        .code(400);
-    //    }
-    //  },
     handler: async function(request, h) {
-      const { email, password } = request.payload;
+      // take in the email and password from the form fields
+      const { email, password} = request.payload;
       try {
-        let user = await User.findByEmail(email);
-        if (!user) {
-          const message = 'Email address is not registered';
-          throw Boom.message(message);
-        }
-        user.comparePassword(password);
-        request.cookieAuth.set({ id: user.id });
-        return h.redirect('/home');
-      } catch (err) {
+        let user = await User.findByEmail(email); //validate that the user exists in the database
+           if (!user) { //if email not recognised - send error message
+             const message = 'Email address is not registered';
+             throw Boom.message(message);
+           }
+            user.comparePassword(password);
+            request.cookieAuth.set({ id: user.id });
+           
+        return h.redirect('/home', {
+          title: 'Home',
+          user: user
+
+        });
+      } 
+      catch (err) {
         // Refresh login throwing boom error
         return h.view('login', { errors: [{ message: err.message }] });
       }
@@ -166,7 +153,7 @@ const Accounts = {
         user.password = userEdit.password;
         await user.save();
           console.log("Update successful")
-        return h.redirect('/settings');
+        return h.redirect('/home');
 
       } catch (err) {
         return h.view('main', { errors: [{ message: err.message }] });

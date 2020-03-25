@@ -1,11 +1,8 @@
 <section class="ui raised segment">
   <div class="ui grid">
     <aside class="sixteen wide column">
-       {{>map}}
-  
- 
-
-    
+       {{> mapreport }}
+     
       <table class="ui celled table segment">
         <thead>
           <tr>
@@ -14,9 +11,11 @@
             <th>Latitude</th>
             <th>Agent</th>
             <th>Delete</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
+          
           {{#each properties}}
             <tr>
               <td> {{eircode}} </td>
@@ -28,6 +27,11 @@
                         <a href="/deleteproperty/{{id}}" ><button  class="ui submit button">Del</button>  </a>
                         {{/if}}
                          </td>
+                 <td> 
+                  {{#if show_edit}}
+                        <a href="/editproperty/{{id}}" ><button  class="ui button">Edit</button>  </a>
+                        {{/if}}
+                </td>
             </tr>
           {{/each}}
         </tbody>

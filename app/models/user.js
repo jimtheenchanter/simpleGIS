@@ -9,6 +9,10 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String
+
+
+  
+  
 });
 
 userSchema.statics.findByEmail = function(email) {
@@ -20,12 +24,12 @@ userSchema.statics.findByEmail = function(email) {
 //   return this.findOne({id : id})
 // }
   
-  userSchema.methods.comparePassword = function(userPassword) {
-    const isMatch = this.password === userPassword;
-    if (!isMatch) {
-      throw Boom('Password mismatch');
-    }
-    return this;
-  };
+userSchema.methods.comparePassword = function(userPassword) {
+  const isMatch = this.password === userPassword;
+  if (!isMatch) {
+    throw Boom('Password mismatch');
+  }
+  return this;
+};
 
 module.exports = Mongoose.model('User', userSchema);

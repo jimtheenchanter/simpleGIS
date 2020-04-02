@@ -29,12 +29,23 @@ http://maptimeboston.github.io/leaflet-intro/
 mongo Stitch Android
 https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877    
 
+Array - add to blank
+https://www.w3resource.com/javascript-exercises/javascript-array-exercise-13.php
 
 How simplicity will Save GIS
 https://vimeo.com/106112939
 
 Leaflet Mapbox Polyline
 https://docs.mapbox.com/mapbox.js/example/v1.0.0/leaflet-draw/
+
+Leaflet Polyline on click return array
+https://stackoverflow.com/questions/32564673/how-to-store-e-latlng-into-array-leaflet
+
+Leaflet: saving & restoring objects
+https://github.com/Leaflet/Leaflet.draw/issues/253
+
+Leaflet Edit polyline
+https://peter-thomson.com/leaflet-map-tutorial/map-track-editor4.html
 
 Node MVC
 https://www.sitepoint.com/node-js-mvc-application/

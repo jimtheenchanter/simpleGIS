@@ -7,12 +7,8 @@
         Edit a premises
       </h2>
       <p>
-       <ol>
-        <li>Enter Eircode</li>
-        <li>Click on the map to get the coordinates</li>
-        <li>Enter Longiture and Latitude </li>
-        <li>Click 'Add' </li>
-      </ol>  
+       Change your property atttributes here. Just edit the text boxes and click Save
+  
         
       </p>
     </div>
@@ -23,16 +19,20 @@
          
                     <div class="field">
                         <label>Eircode</label>
-                        <input value="{{property.eircode}}" type="text"  name="eircode" >
+                        <input value="{{property.eircode}}" type="text"  name="eircode" id="eircode">
                     </div>
-
+                    <div class="field">
+                        <label>Address</label>
+                        <input value="{{property.address}}" type="text"  name="address" id="address">
+                    </div>
                    <div class="ui header">Geo Location</div>
                     <div class="ui two fields">
                      
                      <div class="field">
                          <div class="ui text box">
                             <label>Longitude </label>
-                            <input value="{{property.long}}" type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20">
+                            <input value="{{property.long}}" type="text" id="long" name="long">
+                            {{!-- <input value="{{property.long}}" type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20"> --}}
                         </div>
                     </div>
 

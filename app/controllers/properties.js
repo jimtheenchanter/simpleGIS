@@ -2,17 +2,22 @@
 
 const User = require('../models/user');
 const Property = require('../models/property');
+const Polyline = require('../models/polyline');
+// const Map = require('..models/map');
 
 const Properties = {
   home: {  
            handler: async function(request, h) {
               try{ // pass in the properties
-                // const user = await User.findById;
-                // const properties = await Property.find().populate('agent');
+                const user = await User.findById;
+                
+               const properties = await Property.find().populate('agent');
             return h.view('home', { 
               title: 'Add a Property',
-              // properties: properties
-              // user: user
+              properties: properties, 
+              user: user
+              
+             
              });
               }
            catch (err) {
@@ -25,7 +30,7 @@ const Properties = {
       try {
       const properties = await Property.find().populate('agent'); //get all the  properties
       const u_id = request.auth.credentials.id; // define the user id
-
+      const polylines = await Polyline.find().populate('agent');
       //method to only show delete button for current user's properties
        for(let p in properties){
         console.log(properties[p].agent.id)
@@ -47,13 +52,15 @@ const Properties = {
     // pass the property data into the view 
       return h.view('report', {
         title: 'Properties to Date',
-        properties: properties // reference to properties object
+        properties: properties, // reference to properties object
+        polylines: polylines
+        
       });
-
+     
       // any errors should redirect back to main page
     }catch (err) {
       return h.view('main', {errors: [{message: err.message}]});
-  }}
+  }} 
   },
 
 addProperty: {
@@ -64,6 +71,7 @@ addProperty: {
       const data = request.payload;
       const newProperty = new Property({
         eircode: data.eircode,
+        address: data.address,
         long: data.long,
         lat: data.lat,
         agent: user._id
@@ -79,25 +87,18 @@ addProperty: {
 deleteProperty: {
   auth: false,
   handler: async function(request, h) {
-      // const c_property =  await Property.findById(request.params.id);
-      // const c_image_id = c_poi.cloudinary_id;
-      // await ImageStore.deleteImage(c_image_id);
-      const property = await Property.deleteOne({ _id: request.params.id });
+       const property = await Property.deleteOne({ _id: request.params.id });
       if (property) {
-          //return { success: true };
-          return h.redirect('/report');
+                  return h.redirect('/report');
       }
-      //return.redirect('/report');
-      return Boom.notFound('id not found');
+       return Boom.notFound('id not found');
   }
 },
-
 
 
 showProperty : {
   handler: async function(request, h) {
     try {
-      // const id = request.auth.credentials.id;
       const id = request.params.id;
       const property = await Property.findById(id);
       return h.view('editproperty', { 
@@ -106,8 +107,8 @@ showProperty : {
     } catch (err) {
       return h.view('home', { errors: [{ message: err.message }] });
     }
-  }}
-,
+  }
+},
 
 updateProperty: {
   handler: async function(request, h) {

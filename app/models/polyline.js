@@ -4,8 +4,12 @@ const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
 const polylineSchema = new Schema({
-  latlng: []
-
+  title: String,
+  latlng: [],
+  agent: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
  
 });
 

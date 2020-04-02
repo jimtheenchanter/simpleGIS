@@ -7,6 +7,7 @@
         <thead>
           <tr>
             <th>Eircode</th>
+            <th>Address</th>
             <th>Longitude</th>
             <th>Latitude</th>
             <th>Agent</th>
@@ -19,6 +20,7 @@
           {{#each properties}}
             <tr>
               <td> {{eircode}} </td>
+              <td> {{address}}</td>
               <td> {{long}}   </td>
               <td> {{lat}}   </td>
               <td> {{agent.firstName}} {{agent.lastName}} </td>
@@ -36,6 +38,12 @@
           {{/each}}
         </tbody>
       </table>
+
+      {{!-- {{#each polylines}}
+      <p>
+    {{title}} {{latlng}} {{agent.firstName}} <br>
+    </p>
+      {{/each}} --}}
      </aside>
   </div>
 </section>

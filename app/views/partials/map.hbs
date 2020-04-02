@@ -8,9 +8,8 @@
   <div id="mapid"></div>
 
 
-    
  <script type="text/javascript">
-        var mymap = L.map('mapid').setView([52.345944, -7.321977], 15);
+        var mymap = L.map('mapid').setView([52.345944, -7.321977], 16);
         // create a base layer of map tiles
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
         {
@@ -20,24 +19,7 @@
           accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
          }).addTo(mymap);
 
-var properties = [["E32 P662",52.350377, -7.32708],
-		["E32 R250",52.350003, -7.327381],
-		["E32 F293",52.349885, -7.328003],
-		["E32 WV62",52.349702, -7.328711],
-		["E32 V082",52.349, -7.329784],
-		["E32 HX48",52.34885, -7.330771],
-		["E32 ND39",52.350554, -7.328861],
-		["E32 FY92",52.350973, -7.330803],
-		["E32 YF90",52.351216, -7.332541]
-    ];
 
-// for (var i = 0; i < properties.length; i++) {
-// 			marker = new L.marker([properties[i][1],properties[i][2]])
-// 				.bindPopup(properties[i][0])
-// 				.addTo(mymap);
-// 		};
-
-// var e32vk13 = L.marker([52.35221, -7.32447 ]).addTo(mymap);    
 
 var latlngs = [[52.35039323647337, -7.326826106457664],
 [52.35059069755589, -7.327548405418206],
@@ -58,57 +40,26 @@ var latlngs = [[52.35039323647337, -7.326826106457664],
 [52.35039323647337, -7.326826106457664]
 ];
 
-// var node2 = L.polyline(latlngs, {color: 'red', title: 'node2'}).addTo(mymap);
-
-
-// var node2 = L.polyline(latlngs, {color: 'red', title: 'node2'}).addTo(mymap);
-
-var polyline = new L.Polyline([]).addTo(mymap);
-mymap.on('click', function(event) {
-  new L.Marker(event.latlng).addTo(mymap);
-  polyline.addLatLng(event.latlng);
-  
-});
-
-//var polygon = L.polygon([
-  //  [51.509, -0.08],
-  //  [51.503, -0.06],
-  //  [51.51, -0.047]
-//]).addTo(mymap);
-
-// function onMapClick(e) {
-         // alert("You clicked the map at " + e.latlng); 
-       
-       // mymap.on('click', onMapClick);
-// var lat = e.latlng.lat;
-//  document.getElementById('long').value = lat;
-//   } 
 
 mymap.on('click', function(e) {
- var long = e.latlng.lat;
+ var long = e.latlng.lng;
  document.getElementById('long').value = long;
 })
 
 mymap.on('click', function(e) {
- var lat = e.latlng.lng;
+ var lat = e.latlng.lat;
  document.getElementById('lat').value = lat;
 })
 
-//var polygon = L.polygon([
-  //  [51.509, -0.08],
-  //  [51.503, -0.06],
-  //  [51.51, -0.047]
-//]).addTo(mymap);
 
 function onMapClick(e) {
-            alert("You clicked the map at " + e.latlng);
+             new L.Marker(e.latlng).addTo(mymap);
         } 
-        mymap.on('click', onMapClick);
-
+        mymap.on('click', onMapClick       
+        );
   </script> 
 
   {{#each properties}}
-
     <script>    
        L.marker([{{long}}, {{lat}}]).addTo(mymap).bindPopup(` {{eircode}} <br> {{long}} <br> {{lat}} `);
     </script>

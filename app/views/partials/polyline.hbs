@@ -1,6 +1,7 @@
 <section class="ui raised segment">
   <div class="ui grid ">
     <div class="ui header">
+      <p></p>
       <h2>
         Add a Polyline
       </h2>
@@ -8,7 +9,6 @@
        <ol>
         <li>Enter Title</li>
         <li>Click on the map to draw the line</li>
-       
         <li>Click Save </li>
       </ol>  
         
@@ -16,34 +16,17 @@
     </div>
     <div class="ui form">
      <div class="ui stacked segment">
-        <form action="/polyline" method="POST">
-                   {{!-- <input type="hidden" name="property"> --}}
-         
-                
-
-                   <div class="ui header">Geo Location</div>
-                    <div class="ui two fields">
-                     
-                     <div class="field">
-                         <div class="ui text box">
-                            <label>Longitude </label>
-                            <input type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20">
-                        </div>
+        <form action="/polyline" method="POST">            
+                <div class="ui header">Network Title</div>
+                  <div class="field">
+                        <label>Title</label>
+                        <input type="text" id="polytitle" name="title" >
                     </div>
-
-                     <div class="field">
-                        <div class="ui text box">
-                            <label>Latitude </label>
-                            <input type="text" id="lat" name="lat" placeholder="0.000000" accept="integer/*" maxlength="20">
-                        </div>
-                      </div>
-
-
-                    </div>
-        
+                    {{!-- hidden field to handle polyline coordinates --}}                
+                <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
            <button class="ui blue submit button">  Save </button>
         </form>
-      </div>
+             </div>
     </div>
      
  </div>

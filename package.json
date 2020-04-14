@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/jimtheenchanter/simpleGIS#readme",
   "dependencies": {
-    "@hapi/boom": "^9.0.0",
     "@hapi/bounce": "^2.0.0",
     "@hapi/cookie": "^11.0.0",
     "@hapi/hapi": "^19.1.1",

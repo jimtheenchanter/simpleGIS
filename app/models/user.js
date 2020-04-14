@@ -1,6 +1,6 @@
 'use strict';
 
-const Boom = require('@hapi/boom');
+const Boom = require('boom');
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 
@@ -26,7 +26,8 @@ userSchema.statics.findByEmail = function(email) {
 userSchema.methods.comparePassword = function(userPassword) {
   const isMatch = this.password === userPassword;
   if (!isMatch) {
-    throw Boom('Password mismatch');
+    const message = 'Password mismatch';
+    throw new Boom(message);
   }
   return this;
 };

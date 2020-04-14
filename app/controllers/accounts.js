@@ -1,6 +1,6 @@
 'use strict';
 
-const Boom = require('@hapi/boom');
+const Boom = require('boom');
 const User = require('../models/user');
 const Joi = require('joi');
 
@@ -81,6 +81,26 @@ const Accounts = {
 
   login: {
     auth: false,
+    validate: {
+      payload: Joi.object( {
+        email: Joi.string()
+          .email()
+          .required(),
+        password: Joi.string().required()
+      }),
+      options: {
+        abortEarly: false
+      },
+      failAction: function(request, h, error) {
+        return h
+          .view('login', {
+            title: 'Sign in error',
+            errors: error.details
+          })
+          .takeover()
+          .code(400);
+      }
+    },
     handler: async function(request, h) {
       // take in the email and password from the form fields
       const { email, password} = request.payload;
@@ -88,7 +108,7 @@ const Accounts = {
         let user = await User.findByEmail(email); //validate that the user exists in the database
            if (!user) { //if email not recognised - send error message
              const message = 'Email address is not registered';
-             throw Boom.message(message);
+             throw new Boom(message);
            }
             user.comparePassword(password);
             request.cookieAuth.set({ id: user.id });
@@ -121,28 +141,28 @@ const Accounts = {
   },
 
   updateSettings: {
-    // validate: {
-    //   payload: {
-    //     firstName: Joi.string().required(),
-    //     lastName: Joi.string().required(),
-    //     email: Joi.string()
-    //         .email()
-    //         .required(),
-    //     password: Joi.string().required()
-    //   },
-    //   options: {
-    //     abortEarly: false
-    //   },
-    //   failAction: function(request, h, error) {
-    //     return h
-    //         .view('settings', {
-    //           title: 'Sign up error',
-    //           errors: error.details
-    //         })
-    //         .takeover()
-    //         .code(400);
-    //   }
-    // },
+    validate: {
+      payload: Joi.object ({
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string()
+            .email()
+            .required(),
+        password: Joi.string().required()
+      }),
+      options: {
+        abortEarly: false
+      },
+      failAction: function(request, h, error) {
+        return h
+            .view('settings', {
+              title: 'Update settings error',
+              errors: error.details
+            })
+            .takeover()
+            .code(400);
+      }
+    },
     handler: async function(request, h) {
       try {
         const userEdit = request.payload;

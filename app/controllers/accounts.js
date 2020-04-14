@@ -2,7 +2,7 @@
 
 const Boom = require('@hapi/boom');
 const User = require('../models/user');
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 
 
 const Accounts = {
@@ -22,31 +22,32 @@ const Accounts = {
 
   signup: {
     auth: false,
-    // validate: {
-    //   payload: 
-    //     {
-    //     firstName: Joi.string().required(),
-    //     lastName: Joi.string().required(),
-    //     email: Joi.string()
-    //       .email()
-    //       .required(), 
-    //     password: Joi.string().required()
-    //     }
-    //   ,
-    // options: {
-    //     abortEarly: false,
-    //   },
-
-    // failAction: function(request, h, error) {
-    //     return h
-    //       .view('signup', {
-    //         title: 'Sign up error',
-    //         errors: error.details
-    //       })
-    //       .takeover()
-    //       .code(400);
-    //       }
-    //     },
+    validate: {
+      //  schema which defines rules that our fields must adhere to. 
+      payload: Joi.object(  // must define a Joi object
+        {
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string()
+          .email()
+          .required(), 
+        password: Joi.string().required()
+        })
+      ,
+    options: {
+        abortEarly: false,
+      },
+// handler to invoke of one or more of the fields fails the validation
+    failAction: function(request, h, error) {
+        return h
+          .view('signup', {
+            title: 'Sign up error',
+            errors: error.details
+          })
+          .takeover()
+          .code(400);
+          }
+        },
 
     handler: async function(request, h) {
       try {
@@ -54,7 +55,7 @@ const Accounts = {
         let user = await User.findByEmail(payload.email); //declares user
         if (user) {  // check if user email already exists
           const message = 'Email address is already registered';
-          throw Boom(message);
+          throw new Boom(message);
         }
         const newUser = new User({ //create new user based on user model
           firstName: payload.firstName,

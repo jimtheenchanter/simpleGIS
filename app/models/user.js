@@ -19,12 +19,9 @@ userSchema.statics.findByEmail = function(email) {
     return this.findOne({ email : email});
   };
   
-  userSchema.methods.comparePassword = async function(userPassword) {     // EDITED
+userSchema.methods.comparePassword = async function(userPassword) {    
     const isMatch = await bcrypt.compare(userPassword, this.password);
-    // if (!isMatch) {
-    //        const message = 'Password mismatch';
-    //       throw new Boom(message);
-    //      }
+//uses bcrypt to compare password
     return isMatch;
   };
 

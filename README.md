@@ -25,6 +25,11 @@ https://codahale.com/how-to-safely-store-a-password/
 Boom:
 https://www.codota.com/code/javascript/classes/boom/Boom
 
+handlebars Built in Helper
+https://handlebarsjs.com/guide/builtin-helpers.html
+handlebars fix for access denied.. error
+https://stackoverflow.com/questions/59690923/handlebars-access-has-been-denied-to-resolve-the-property-from-because-it-is
+
 Hapi:
 https://github.com/hapijs/hapi/issues/4017
 
@@ -68,8 +73,7 @@ https://stackoverflow.com/questions/43080150/handlebars-and-node-js-if-user-then
 Node.js Session Management
 https://pomcor.com/2018/06/25/login-session-maintenance-in-node-js-using-express-and-handlebars/
 
-handlebars Built in Helper
-https://handlebarsjs.com/guide/builtin-helpers.html
+
 
 CRUD Mongoose
 https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34

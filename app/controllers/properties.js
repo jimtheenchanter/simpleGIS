@@ -9,6 +9,7 @@ const Properties = {
   home: {  
            handler: async function(request, h) {
               try{ // pass in the properties
+                // const id = request.auth.credentials.id;
                 const user = await User.findById;
                 
                const properties = await Property.find().populate('agent');

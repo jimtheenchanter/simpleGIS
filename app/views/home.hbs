@@ -4,12 +4,12 @@
 <div class = " ui grid">
  <div class = "six wide column">
   
-    {{!-- {{#if   }} --}}
-    {{> property}}
-
-    {{!-- {{else }} --}}
-      {{!-- {{> welcomemenu }} --}}
-   {{!-- {{/if}} --}}
+    {{#if user.agent  }} 
+   
+ {{> welcomemenu }} 
+    {{else }} 
+       {{> property}}
+   {{/if}} 
 
   <div class="ui  divider"></div>
 

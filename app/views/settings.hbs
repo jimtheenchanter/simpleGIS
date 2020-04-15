@@ -5,6 +5,7 @@
     <div class="ui ten wide column">
       <div class="ui stacked fluid form segment">
         <form action="/settings" method="POST">
+        
           <h3 class="ui header">Update Your Details, {{user.firstName}} </h3>
           <div class="two fields">
             <div class="field">
@@ -22,9 +23,10 @@
           </div>
           <div class="field">
             <label>Password</label>
-            <input value="{{user.password}}" type="password" name="password" placeholder="{{user.password}}">
+            <input value="{{user.password}}" type="password" name="password" placeholder="">
           </div>
           <button class="ui blue submit button">Update</button>
+        
         </form>
         {{> error }}
       </div>

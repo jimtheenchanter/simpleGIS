@@ -9,15 +9,18 @@ launch app:
 `node index.js`
 navigate
 
-### Handlebars: Access has been denied error
-Solution: Install dev dependency
-npm i -D handlebars@4.5.0
+###
 
 https://secure-earth-93268.herokuapp.com/ | https://git.heroku.com/secure-earth-93268.git
 
-
 Array - add to blank
 https://www.w3resource.com/javascript-exercises/javascript-array-exercise-13.php
+
+AWS - Deploy Node App
+https://tutors-design.netlify.com/lab/wit-hdip-comp-sci-2018-devops.netlify.com/topic-10-Security/unit-2-node-deployment/book-1-Deploying-a-node-app/1-Installation
+
+BCrypt, How to safely store a password:
+https://codahale.com/how-to-safely-store-a-password/
 
 Boom:
 https://www.codota.com/code/javascript/classes/boom/Boom

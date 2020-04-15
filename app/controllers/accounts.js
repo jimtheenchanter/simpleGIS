@@ -2,6 +2,8 @@
 
 const Boom = require('boom');
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const Joi = require('joi');
 
 
@@ -26,12 +28,12 @@ const Accounts = {
       //  schema which defines rules that our fields must adhere to. 
       payload: Joi.object(  // must define a Joi object
         {
-        firstName: Joi.string().required(),
+        firstName: Joi.string().regex(/^[A-Z][a-z]{2,}$/).required(),
         lastName: Joi.string().required(),
         email: Joi.string()
           .email()
           .required(), 
-        password: Joi.string().required()
+        password: Joi.string().min(6).required()
         })
       ,
     options: {
@@ -57,11 +59,14 @@ const Accounts = {
           const message = 'Email address is already registered';
           throw new Boom(message);
         }
+
+        const hash = await bcrypt.hash(payload.password, saltRounds); // 
+
         const newUser = new User({ //create new user based on user model
           firstName: payload.firstName,
           lastName: payload.lastName,
           email: payload.email,
-          password: payload.password
+          password: hash
         });
         user = await newUser.save(); // save newuser data as user
         request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
@@ -110,7 +115,13 @@ const Accounts = {
              const message = 'Email address is not registered';
              throw new Boom(message);
            }
-            user.comparePassword(password);
+            // user.comparePassword(password);
+            if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+              const message = 'Password mismatch';
+              throw new Boom(message);
+            } else {
+
+
             request.cookieAuth.set({ id: user.id });
            
         return h.redirect('/home', {
@@ -118,6 +129,7 @@ const Accounts = {
           user: user
 
         });
+      }
       } 
       catch (err) {
         // Refresh login throwing boom error
@@ -168,10 +180,13 @@ const Accounts = {
         const userEdit = request.payload;
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
+        const hash = await bcrypt.hash(userEdit.password, saltRounds); 
+
         user.firstName = userEdit.firstName;
         user.lastName = userEdit.lastName;
         user.email = userEdit.email;
-        user.password = userEdit.password;
+        // user.password = userEdit.password;
+        user.password = hash;
         await user.save();
           console.log("Update successful")
         return h.redirect('/home');

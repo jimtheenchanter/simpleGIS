@@ -100,7 +100,7 @@ showProperty : {
   handler: async function(request, h) {
     try {
       const id = request.params.id;
-      const property = await Property.findById(id);
+      const property = await Property.findById(id); // use the property with matching ID
       return h.view('editproperty', { 
         title: 'Edit Property', 
         property: property });

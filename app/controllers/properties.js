@@ -2,11 +2,8 @@
 
 const User = require('../models/user');
 const Property = require('../models/property');
-<<<<<<< HEAD
-=======
 const Polyline = require('../models/polyline');
 // const Map = require('..models/map');
->>>>>>> develop
 
 const Properties = {
   home: {  
@@ -32,27 +29,16 @@ const Properties = {
   report: {
     handler: async function(request, h) {
       try {
-<<<<<<< HEAD
-      const properties = await Property.find().populate('agent');
-      const u_id = request.auth.credentials.id;
-
-       //method to only show delete button for current user's properties
-=======
       const properties = await Property.find().populate('agent'); //get all the  properties
       const u_id = request.auth.credentials.id; // define the user id
       const polylines = await Polyline.find().populate('agent');
       //method to only show delete button for current user's properties
->>>>>>> develop
        for(let p in properties){
         console.log(properties[p].agent.id)
         if(properties[p].agent.id == u_id){
           properties[p].show_delete = true;
         }else{
           properties[p].show_delete = false;
-<<<<<<< HEAD
-        }
-    }
-=======
         }}
 
         //only show edit field for agents own entries
@@ -65,22 +51,12 @@ const Properties = {
           }
         }
     // pass the property data into the view 
->>>>>>> develop
       return h.view('report', {
         title: 'Properties to Date',
         properties: properties, // reference to properties object
         polylines: polylines
         
       });
-<<<<<<< HEAD
-    }catch (err) {
-      return h.view('main', {errors: [{message: err.message}]});
-  }}
-  },
-
-
-addproperty: {
-=======
      
       // any errors should redirect back to main page
     }catch (err) {
@@ -89,7 +65,6 @@ addproperty: {
   },
 
 addProperty: {
->>>>>>> develop
   handler: async function(request, h) {
     try {
       const id = request.auth.credentials.id;
@@ -108,28 +83,6 @@ addProperty: {
       return h.view('main', { errors: [{ message: err.message }] });
     }
   }
-<<<<<<< HEAD
-}
-,
-
-deleteproperty: {
-  auth: false,
-  handler: async function(request, h) {
-      // const c_property =  await Property.findById(request.params.id);
-      // const c_image_id = c_poi.cloudinary_id;
-      // await ImageStore.deleteImage(c_image_id);
-      const property = await Property.deleteOne({ _id: request.params.id });
-      if (property) {
-          //return { success: true };
-          return h.redirect('/report');
-      }
-      //return.redirect('/report');
-      return Boom.notFound('id not found');
-  }
-}
-
-}
-=======
 },
 
 deleteProperty: {
@@ -177,7 +130,6 @@ updateProperty: {
     }
   }
 }}
->>>>>>> develop
 ;
 
 module.exports = Properties;

@@ -1,32 +1,18 @@
 <section class="ui raised segment">
   <div class="ui grid">
     <aside class="sixteen wide column">
-<<<<<<< HEAD
-       {{>map}}
-  
- 
-
-    
-=======
        {{> mapreport }}
      
->>>>>>> develop
       <table class="ui celled table segment">
         <thead>
           <tr>
             <th>Eircode</th>
-<<<<<<< HEAD
-=======
             <th>Address</th>
->>>>>>> develop
-            <th>Longitude</th>
             <th>Latitude</th>
+            <th>Longitude</th>
             <th>Agent</th>
             <th>Delete</th>
-<<<<<<< HEAD
-=======
             <th>Edit</th>
->>>>>>> develop
           </tr>
         </thead>
         <tbody>
@@ -35,35 +21,29 @@
             <tr>
               <td> {{eircode}} </td>
               <td> {{address}}</td>
-              <td> {{long}}   </td>
               <td> {{lat}}   </td>
+              <td> {{long}}   </td>
               <td> {{agent.firstName}} {{agent.lastName}} </td>
                 <td> 
                   {{#if show_delete}}
                         <a href="/deleteproperty/{{id}}" ><button  class="ui submit button">Del</button>  </a>
                         {{/if}}
                          </td>
-<<<<<<< HEAD
-=======
                  <td> 
                   {{#if show_edit}}
                         <a href="/editproperty/{{id}}" ><button  class="ui button">Edit</button>  </a>
                         {{/if}}
                 </td>
->>>>>>> develop
             </tr>
           {{/each}}
         </tbody>
       </table>
-<<<<<<< HEAD
-=======
 
       {{!-- {{#each polylines}}
       <p>
     {{title}} {{latlng}} {{agent.firstName}} <br>
     </p>
       {{/each}} --}}
->>>>>>> develop
      </aside>
   </div>
 </section>

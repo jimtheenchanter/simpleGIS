@@ -16,10 +16,6 @@ module.exports = [
 // { method: 'GET', path: '/', config: Properties.index },
 { method: 'GET', path: '/home', config: Properties.home },
 { method: 'GET', path: '/report', config: Properties.report },
-<<<<<<< HEAD
-{ method: 'POST', path: '/property', config: Properties.addproperty },
-{ method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteproperty },
-=======
 
 { method: 'GET', path: '/editproperty/{id}', config: Properties.showProperty },
 { method: 'POST', path: '/editproperty', config: Properties.updateProperty },
@@ -30,7 +26,6 @@ module.exports = [
 
 { method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteProperty },
 
->>>>>>> develop
 
 // routes for static pages
 

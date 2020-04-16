@@ -2,13 +2,9 @@
 
 const Boom = require('@hapi/boom');
 const User = require('../models/user');
-<<<<<<< HEAD
-const Joi = require('@hapi/joi');
-=======
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Joi = require('joi');
->>>>>>> develop
 
 
 const Accounts = {
@@ -28,33 +24,6 @@ const Accounts = {
 
   signup: {
     auth: false,
-<<<<<<< HEAD
-    // validate: {
-    //   payload: 
-    //     {
-    //     firstName: Joi.string().required(),
-    //     lastName: Joi.string().required(),
-    //     email: Joi.string()
-    //       .email()
-    //       .required(), 
-    //     password: Joi.string().required()
-    //     }
-    //   ,
-    // options: {
-    //     abortEarly: false,
-    //   },
-
-    // failAction: function(request, h, error) {
-    //     return h
-    //       .view('signup', {
-    //         title: 'Sign up error',
-    //         errors: error.details
-    //       })
-    //       .takeover()
-    //       .code(400);
-    //       }
-    //     },
-=======
     validate: {
       //  schema which defines rules that our fields must adhere to. 
       payload: Joi.object(  // must define a Joi object
@@ -81,7 +50,6 @@ const Accounts = {
           .code(400);
           }
         },
->>>>>>> develop
 
     handler: async function(request, h) {
       try {
@@ -118,28 +86,6 @@ const Accounts = {
 
   login: {
     auth: false,
-<<<<<<< HEAD
-    //  validate: {
-    //   payload: {
-    //      email: Joi.string()
-    //       .email()
-    //        .required(),
-    //      password: Joi.string().required()
-    //    },
-    //    options: {
-    //      abortEarly: false
-    //  },
-    //    failAction: function(request, h, error) {
-    //      return h
-    //        .view('login', {
-    //          title: 'Sign in error',
-    //         errors: error.details
-    //     })
-    //        .takeover()
-    //        .code(400);
-    //    }
-    //  },
-=======
     validate: {
       payload: Joi.object( {
         email: Joi.string()
@@ -160,22 +106,10 @@ const Accounts = {
           .code(400);
       }
     },
->>>>>>> develop
     handler: async function(request, h) {
       // take in the email and password from the form fields
       const { email, password} = request.payload;
       try {
-<<<<<<< HEAD
-        let user = await User.findByEmail(email);
-        if (!user) {
-          const message = 'Email address is not registered';
-          throw Boom.message(message);
-        }
-        user.comparePassword(password);
-        request.cookieAuth.set({ id: user.id });
-        return h.redirect('/home');
-      } catch (err) {
-=======
         let user = await User.findByEmail(email); //validate that the user exists in the database
            if (!user) { //if email not recognised - send error message
              const message = 'Email address is not registered';
@@ -198,7 +132,6 @@ const Accounts = {
       }
       } 
       catch (err) {
->>>>>>> develop
         // Refresh login throwing boom error
         return h.view('login', { errors: [{ message: err.message }] });
       }
@@ -256,11 +189,7 @@ const Accounts = {
         user.password = hash;
         await user.save();
           console.log("Update successful")
-<<<<<<< HEAD
-        return h.redirect('/settings');
-=======
         return h.redirect('/home');
->>>>>>> develop
 
       } catch (err) {
         return h.view('main', { errors: [{ message: err.message }] });

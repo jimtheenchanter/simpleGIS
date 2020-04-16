@@ -34,7 +34,7 @@ mymap.on('click', function(e) {
 
 
 function onMapClick(e) {
-             new L.Marker(e.latlng).addTo(mymap);
+         alert("You clicked the map at " + e.latlng);
         } 
         mymap.on('click', onMapClick       
         );

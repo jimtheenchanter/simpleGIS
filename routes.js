@@ -2,6 +2,7 @@
 
 const Accounts = require('./app/controllers/accounts');
 const Properties = require('./app/controllers/properties');
+const Polylines = require('./app/controllers/polylines');
 
 module.exports = [
 { method: 'GET', path: '/', config: Accounts.index },
@@ -15,12 +16,25 @@ module.exports = [
 // { method: 'GET', path: '/', config: Properties.index },
 { method: 'GET', path: '/home', config: Properties.home },
 { method: 'GET', path: '/report', config: Properties.report },
+<<<<<<< HEAD
 { method: 'POST', path: '/property', config: Properties.addproperty },
 { method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteproperty },
+=======
+
+{ method: 'GET', path: '/editproperty/{id}', config: Properties.showProperty },
+{ method: 'POST', path: '/editproperty', config: Properties.updateProperty },
+{ method: 'POST', path: '/property', config: Properties.addProperty },
+
+{ method: 'GET', path: '/polylinemain', config: Polylines.polyline},
+{ method: 'POST', path: '/polyline', config: Polylines.addPolyline },
+
+{ method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteProperty },
+
+>>>>>>> develop
 
 // routes for static pages
 
-{    method: 'GET',
+{    method: 'GET', 
      path: '/{param*}',
      handler: { 
          directory: {

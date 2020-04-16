@@ -1,0 +1,34 @@
+<section class="ui raised segment">
+  <div class="ui grid ">
+    <div class="ui header">
+      <p></p>
+      <h2>
+        Add a Cable Route
+      </h2>
+      <p>
+       <ol>
+        <li>Enter Title</li>
+        <li>Click on the map to draw the line</li>
+        <li>Click Save </li>
+      </ol>  
+        
+      </p>
+    </div>
+    <div class="ui form">
+     <div class="ui stacked segment">
+        <form action="/polyline" method="POST">            
+                <div class="ui header">Network Title</div>
+                  <div class="field">
+                        <label>Title</label>
+                        <input type="text" id="polytitle" name="title" >
+                    </div>
+                    {{!-- hidden field to handle polyline coordinates --}}                
+                <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
+           <button class="ui blue submit button">  Save </button>
+        </form>
+             </div>
+    </div>
+     
+ </div>
+
+</section>

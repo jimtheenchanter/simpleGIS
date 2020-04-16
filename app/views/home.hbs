@@ -3,18 +3,26 @@
 <section class="ui raised segment">
 <div class = " ui grid">
  <div class = "six wide column">
-  {{> property }}
   
+    {{#if user.agent  }} 
+   
+ {{> welcomemenu }} 
+    {{else }} 
+       {{> property}}
+   {{/if}} 
 
   <div class="ui  divider"></div>
 
+<<<<<<< HEAD
      {{!-- <div class="ui teal progress" data-percent="${progress}" id="mainprogress">
        <div class="bar"></div>
      </div> --}}
+=======
+>>>>>>> develop
 
   </div>
 
-  <div class = "six wide column">
+  <div class = "ten wide column">
    {{> map }}
   </div>
  </div>

@@ -1,0 +1,54 @@
+ <section>
+   <style>
+        #mapid {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+  <div id="mapid"></div>
+    
+ <script type="text/javascript">
+        var mymap = L.map('mapid').setView([52.345944, -7.321977], 15);
+        // create a base layer of map tiles
+         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
+        {
+          attribution: '',
+              maxZoom: 18,
+          id: 'mapbox/streets-v11',
+          accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
+         }).addTo(mymap);
+ </script> 
+
+  {{#each properties}}
+   <script>    
+   L.marker([ {{lat}}, {{long}}]).addTo(mymap).bindPopup(` {{eircode}} <br> {{long}} <br> {{lat}} `);
+    </script>
+
+  {{/each}} 
+    {{#each polylines}}
+    <script>
+
+      // create an array made up of lat lngs
+    arr = [];
+    {{#each latlng}}
+        console.log("{{this.lat}}  {{this.lng}}")
+        mini_arr = [];
+        mini_arr.push({{this.lat}});
+        mini_arr.push({{this.lng}});
+        arr.push(mini_arr);
+    {{/each}}
+      console.log(arr, "latlng array passed")
+      test = new L.polyline(arr);
+      test.addTo(mymap)
+  L.polyline(arr,  {color: 'red', title: 'node2'}).addTo(mymap)
+    </script>
+  {{/each}}
+
+
+
+</script>
+
+</section>
+
+
+

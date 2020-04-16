@@ -6,6 +6,7 @@
         }
     </style>
   <div id="mapid"></div>
+<<<<<<< HEAD
 
 
     
@@ -36,9 +37,25 @@ var properties = [["E32 P662",52.350377, -7.32708],
 // 				.bindPopup(properties[i][0])
 // 				.addTo(mymap);
 // 		};
+=======
+
+
+ <script type="text/javascript">
+        var mymap = L.map('mapid').setView([52.345944, -7.321977], 16);
+        // create a base layer of map tiles
+         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
+        {
+          attribution: '',
+              maxZoom: 18,
+          id: 'mapbox/streets-v11',
+          accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
+         }).addTo(mymap);
+
+>>>>>>> develop
 
 // var e32vk13 = L.marker([52.35221, -7.32447 ]).addTo(mymap);    
 
+<<<<<<< HEAD
 var latlngs = [[52.35039323647337, -7.326826106457664],
 [52.35059069755589, -7.327548405418206],
 [52.35084412837997, -7.329333127625257],
@@ -57,6 +74,18 @@ var latlngs = [[52.35039323647337, -7.326826106457664],
 [52.35024913180711, -7.326892276903236],
 [52.35039323647337, -7.326826106457664]
 ];
+=======
+
+mymap.on('click', function(e) {
+ var long = e.latlng.lng;
+ document.getElementById('long').value = long;
+})
+
+mymap.on('click', function(e) {
+ var lat = e.latlng.lat;
+ document.getElementById('lat').value = lat;
+})
+>>>>>>> develop
 
 // var node2 = L.polyline(latlngs, {color: 'red', title: 'node2'}).addTo(mymap);
 
@@ -91,6 +120,7 @@ mymap.on('click', function(e) {
  document.getElementById('long').value = long;
 })
 
+<<<<<<< HEAD
 ;
   </script> 
 
@@ -98,6 +128,18 @@ mymap.on('click', function(e) {
 
     <script>    
        L.marker([{{long}}, {{lat}}]).addTo(mymap).bindPopup(` <h1>{{eircode}}</h1> <br> {{long}} <br> {{lat}} `);
+=======
+function onMapClick(e) {
+         alert("You clicked the map at " + e.latlng);
+        } 
+        mymap.on('click', onMapClick       
+        );
+  </script> 
+
+  {{#each properties}}
+    <script>    
+       L.marker([ {{lat}}, {{long}}]).addTo(mymap).bindPopup(` {{eircode}} <br> {{long}} <br> {{lat}} `);
+>>>>>>> develop
     </script>
   {{/each}} 
   
@@ -105,6 +147,7 @@ mymap.on('click', function(e) {
 </section>
 
 
+<<<<<<< HEAD
 
 {{!-- 
 
@@ -120,3 +163,5 @@ mymap.on('click', function(e) {
   style: 'mapbox://styles/mapbox/streets-v11'
 });
 </script> --}}
+=======
+>>>>>>> develop

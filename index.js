@@ -27,7 +27,7 @@ async function init() {
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));
   
-
+// this is how the views are handled with handlebars
   server.views({
     engines: {
       hbs: require('handlebars')

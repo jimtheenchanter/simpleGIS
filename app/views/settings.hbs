@@ -5,26 +5,28 @@
     <div class="ui ten wide column">
       <div class="ui stacked fluid form segment">
         <form action="/settings" method="POST">
-          <h3 class="ui header">Update Your Details</h3>
+        
+          <h3 class="ui header">Update Your Details, {{user.firstName}} </h3>
           <div class="two fields">
             <div class="field">
               <label>First Name</label>
-              <input value="{{user.firstName}}" type="text" name="firstName">
+              <input value="{{user.firstName}}" type="text" name="firstName" placeholder="{{user.firstName}}">
             </div>
             <div class="field">
               <label>Last Name</label>
-              <input value="{{user.lastName}}" type="text" name="lastName">
+              <input value="{{user.lastName}}" type="text" name="lastName" placeholder="{{user.lastName}}">
             </div>
           </div>
           <div class="field">
             <label>Email</label>
-            <input value="{{user.email}}" type="text" name="email">
+            <input value="{{user.email}}" type="text" name="email" placeholder="{{user.email}}">
           </div>
           <div class="field">
             <label>Password</label>
-            <input value="{{user.password}}" type="password" name="password">
+            <input value="{{user.password}}" type="password" name="password" placeholder="">
           </div>
           <button class="ui blue submit button">Update</button>
+        
         </form>
         {{> error }}
       </div>

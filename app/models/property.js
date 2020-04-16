@@ -5,6 +5,7 @@ const Schema = Mongoose.Schema;
 
 const propertySchema = new Schema({
   eircode: String,
+  address: String,
   long: Number,
   lat: Number,
   agent: {

@@ -1,0 +1,94 @@
+Launch WBS ami 
+Launch DBS ami
+
+
+# Install mongo DB on DB master instance
+sudo nano /etc/yum.repos.d/mongodb-org-4.0.repo
+Then enter the following into this file:
+
+[mongodb-org-4.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/4.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+
+#ssh onto instance
+sudo yum install -y mongodb-org
+mkdir db
+
+#add this to user data
+sudo mongod -dbpath db --bind_ip_all
+
+#Install node on webserver master instance
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+
+nvm install 10.15.3
+npm install hapi
+node index.js
+
+
+# Download Hapi web app to web server
+curl https://codeload.github.com/wit-hdip-comp-sci-2018/donation-web/zip/donation.11.end -o donation.zip
+unzip donation.zip
+cd donation-web-donation.11.end/npm a
+npm install
+
+#causing cpu load on the servers
+nano cpu100
+
+while true
+do
+  x=0
+done
+
+chmod +x cpu100
+[ec2-user@ip-10-0-0-7 ~]$ ./cpu100
+
+auto start databse at launch config user data
+#!/bin/bash
+su - ec2-user -c 'sudo mongod -dbpath db --bind_ip_all'
+
+auto start node at launch config user data
+#!/bin/bash
+su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
+
+#first ssh connection
+ssh -t -o StrictHostKeyChecking=no -i ~/20082197Demo.pem ec2-user@54.229.66.174 
+
+#subsequent connections
+ssh -i ~/20082197Demo.pem ec2-user@54.229.66.174
+
+#copy pem key to webserver (UNSAFE - for demo ssh purposes only)
+scp -i ~/20082197Demo.pem 20082197Demo.pem ec2-user@192.168.15.1:.
+
+#Enter the following command to	have the system	always start the web server following a reboot:
+sudo systemctl enable httpd
+
+#start the web server
+
+sudo service httpd start
+
+install	the Apache web	server with the	command (N.B. on	remote machine via SSH
+sudo yum install httpd -y
+
+#add custom content to apache index
+sudo nano /var/www/html/index.html
+
+#examine apache log files
+sudo tail -f /var/log/httpd/access_log
+
+
+#generate key		
+openssl genrsa -out webserver.key 2048
+
+#generate cert signing request
+openssl req -new -key webserver.key -out webserver.csr
+
+lb-wbs-apache-1620204258.eu-west-1.elb.amazonaws.com
+
+
+#Create  self-signed cert
+openssl x509 -req -signkey webserver.key -sha256 -in webserver.csr -out webserver_self.crt
+

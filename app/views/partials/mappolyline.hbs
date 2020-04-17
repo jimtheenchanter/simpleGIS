@@ -36,7 +36,7 @@ mymap.on('click', function(event) {
 {{!-- Iterate through the properties to add markers --}}
   {{#each properties}}
     <script>    
-       L.marker([{{long}}, {{lat}}]).addTo(mymap);
+       L.marker([{{lat}}, {{long}}]).addTo(mymap);
     </script>
   {{/each}} 
   

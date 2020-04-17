@@ -9,22 +9,6 @@ launch app:
 `node index.js`
 navigate
 
-<<<<<<< HEAD
-### Handlebars: Access has been denied error
-SOlution: INstall deve dependency
-npm i -D handlebars@4.5.0
-
-https://secure-earth-93268.herokuapp.com/ | https://git.heroku.com/secure-earth-93268.git
-
-Joi
-https://medium.com/@rossbulat/joi-for-node-exploring-javascript-object-schema-validation-50dd4b8e1b0f
-
-https://github.com/hapijs/hapi/issues/4017
-
-https://medium.com/@piotrkarpaa/handling-joi-validation-errors-in-hapi-17-26fc07448576
-
-leaflet:
-=======
 ###
 
 https://secure-earth-93268.herokuapp.com/ | https://git.heroku.com/secure-earth-93268.git
@@ -34,6 +18,10 @@ https://www.w3resource.com/javascript-exercises/javascript-array-exercise-13.php
 
 AWS - Deploy Node App
 https://tutors-design.netlify.com/lab/wit-hdip-comp-sci-2018-devops.netlify.com/topic-10-Security/unit-2-node-deployment/book-1-Deploying-a-node-app/1-Installation
+
+https://medium.com/@nishankjaintdk/setting-up-a-node-js-app-on-a-linux-ami-on-an-aws-ec2-instance-with-nginx-59cbc1bcc68c
+
+https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
 
 BCrypt, How to safely store a password:
 https://codahale.com/how-to-safely-store-a-password/
@@ -61,17 +49,10 @@ Leaflet Mapbox Polyline
 https://docs.mapbox.com/mapbox.js/example/v1.0.0/leaflet-draw/
 
 Leaflet:
->>>>>>> develop
 What Leaflet does: "Slippy" maps with tiled base layers, panning and zooming, and feature layers that you supply. It handles various basic tasks like converting data to map layers and mouse interactions, and it's easy to extend with plugins. It will also work well across most types of devices
 http://maptimeboston.github.io/leaflet-intro/
 
 mongo Stitch Android
-<<<<<<< HEAD
-https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877
-
-How simplicity will Save GIS
-https://vimeo.com/106112939
-=======
 https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877    
 
 
@@ -101,4 +82,3 @@ https://pomcor.com/2018/06/25/login-session-maintenance-in-node-js-using-express
 CRUD Mongoose
 https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34
 
->>>>>>> develop

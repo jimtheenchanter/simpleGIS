@@ -71,6 +71,9 @@ https://www.sitepoint.com/node-js-mvc-application/
 KML in google maps
 https://developers.google.com/maps/documentation/javascript/kml
 
+Semantic UI
+https://semantic-ui.com/usage/layout.html
+
 User Permissions
 https://stackoverflow.com/questions/43080150/handlebars-and-node-js-if-user-then-show-log-in-button
 

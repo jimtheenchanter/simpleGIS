@@ -25,7 +25,6 @@
     "url": "https://github.com/jimtheenchanter/simpleGIS/issues"
   },
   "homepage": "https://github.com/jimtheenchanter/simpleGIS#readme",
-  
   "dependencies": {
     "@hapi/bounce": "^2.0.0",
     "@hapi/cookie": "^11.0.1",
@@ -45,7 +44,7 @@
     "vision": "^5.4.4"
   },
   "devDependencies": {
-    "handlebars": "^4.5.3",
+    "handlebars": "^4.5.0",
     "prettier": "^1.19.1"
   },
   "prettier": {

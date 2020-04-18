@@ -123,7 +123,7 @@ updateProperty: {
    
       await property.save();
         console.log("Update successful")
-      return h.redirect('report');
+      return h.redirect('/report');
 
     } catch (err) {
       return h.view('main', { errors: [{ message: err.message }] });

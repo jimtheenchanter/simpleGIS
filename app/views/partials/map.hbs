@@ -23,24 +23,24 @@
 // var e32vk13 = L.marker([52.35221, -7.32447 ]).addTo(mymap);    
 
 
-mymap.on('click', function(e) {
- var long = e.latlng.lng;
- document.getElementById('long').value = long;
-})
+// mymap.on('click', function(e) {
+//  var long = e.latlng.lng;
+//  document.getElementById('long').value = long;
+// })
 
-mymap.on('click', function(e) {
- var lat = e.latlng.lat;
- document.getElementById('lat').value = lat;
-})
+// mymap.on('click', function(e) {
+//  var lat = e.latlng.lat;
+//  document.getElementById('lat').value = lat;
+// })
 
 // var node2 = L.polyline(latlngs, {color: 'red', title: 'node2'}).addTo(mymap);
 
-var polyline = new L.Polyline([]).addTo(mymap);
-mymap.on('click', function(event) {
-  new L.Marker(event.latlng).addTo(mymap);
-  polyline.addLatLng(event.latlng);
+// var polyline = new L.Polyline([]).addTo(mymap);
+// mymap.on('click', function(event) {
+//   new L.Marker(event.latlng).addTo(mymap);
+ //  polyline.addLatLng(event.latlng);
   
-});
+// });
 
 //var polygon = L.polygon([
   //  [51.509, -0.08],

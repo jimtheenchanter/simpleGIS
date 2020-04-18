@@ -19,11 +19,11 @@
          
                     <div class="field">
                         <label>Eircode</label>
-                        <input value="{{property.eircode}}" type="text"  name="eircode" id="eircode">
+                        <input value="{{property.eircode}}" type="text"  name="eircode" id="eircode" placeholder="{{property.eircode}}">
                     </div>
                     <div class="field">
                         <label>Address</label>
-                        <input value="{{property.address}}" type="text"  name="address" id="address">
+                        <input value="{{property.address}}" type="text"  name="address" id="address" placeholder="{{property.address}}">
                     </div>
                    <div class="ui header">Geo Location</div>
                     <div class="ui two fields">
@@ -31,7 +31,7 @@
                      <div class="field">
                          <div class="ui text box">
                             <label>Longitude </label>
-                            <input value="{{property.long}}" type="text" id="long" name="long">
+                            <input value="{{property.long}}" type="text" id="long" name="long" placeholder="{{property.long}}" accept="integer/*" maxlength="20">
                             {{!-- <input value="{{property.long}}" type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20"> --}}
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                      <div class="field">
                         <div class="ui text box">
                             <label>Latitude </label>
-                            <input value="{{property.lat}}" type="text" id="lat" name="lat" placeholder="0.000000" accept="integer/*" maxlength="20">
+                            <input value="{{property.lat}}" type="text" id="lat" name="lat" placeholder="{{property.lat}}" accept="integer/*" maxlength="20">
                         </div>
                       </div>
 

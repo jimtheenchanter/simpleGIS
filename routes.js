@@ -1,10 +1,12 @@
 'use strict';
-
+// import required controllers
 const Accounts = require('./app/controllers/accounts');
 const Properties = require('./app/controllers/properties');
 const Polylines = require('./app/controllers/polylines');
+const Polygons = require('./app/controllers/polygons');
 
 module.exports = [
+  // routes to handle account functions
 { method: 'GET', path: '/', config: Accounts.index },
 { method: 'GET', path: '/signup', config: Accounts.showSignup},
 { method: 'GET', path: '/login', config: Accounts.showLogin },
@@ -13,19 +15,22 @@ module.exports = [
 { method: 'POST', path: '/login', config: Accounts.login },
 { method: 'GET', path: '/settings', config: Accounts.showSettings },
 { method: 'POST', path: '/settings', config: Accounts.updateSettings },
-// { method: 'GET', path: '/', config: Properties.index },
-{ method: 'GET', path: '/home', config: Properties.home },
+  // routes to handle property functions
+{ method: 'GET', path: '/home', config: Properties.home }, //addproperty
 { method: 'GET', path: '/report', config: Properties.report },
-
+{ method: 'GET', path: '/addpropertypage', config: Properties.addPropertyPage},
 { method: 'GET', path: '/editproperty/{id}', config: Properties.showProperty },
 { method: 'POST', path: '/editproperty', config: Properties.updateProperty },
+{ method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteProperty },
 { method: 'POST', path: '/property', config: Properties.addProperty },
 
 { method: 'GET', path: '/polylinemain', config: Polylines.polyline},
 { method: 'POST', path: '/polyline', config: Polylines.addPolyline },
+{ method: 'GET', path: '/deletepolyline/{id}', config: Polylines.deletePolyline },
 
-{ method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteProperty },
-
+{ method: 'GET', path: '/polygonmain', config: Polygons.polygon},
+{ method: 'POST', path: '/polygon', config: Polygons.addPolygon },
+{ method: 'GET', path: '/deletepolygon/{id}', config: Polygons.deletePolygon },
 
 // routes for static pages
 
@@ -34,7 +39,7 @@ module.exports = [
      handler: { 
          directory: {
            path: './public'  } 
-                            },
+          },
              options: { auth: false }
             }
 ];

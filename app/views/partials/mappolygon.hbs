@@ -19,16 +19,16 @@
          }).addTo(mymap);
 
 
-// User clicks the map which adds coords to make polyline array
-var polyline = new L.Polyline([]).addTo(mymap);
+// User clicks the map which adds coords to make polygon array
+var polygon = new L.Polygon([]).addTo(mymap);
 
 mymap.on('click', function(event) {
   // new marker on coordinate
   new L.Marker(event.latlng, {color: 'red', draggable: false}).addTo(mymap);
-  polyline.addLatLng(event.latlng);
+  polygon.addLatLng(event.latlng);
 
 // populate latlng input box with polyline LatLngs
-  document.getElementById('latlng').value = polyline.getLatLngs();
+  document.getElementById('latlng').value = polygon.getLatLngs();
 
 });
 

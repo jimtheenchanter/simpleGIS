@@ -3,17 +3,17 @@
     <div class="ui header">
       <p></p>
       <h2>
-        Add a Cable Route
+        Add an area
       </h2>
    
     </div>
     <div class="ui form">
      <div class="ui stacked segment">
-        <form action="/polyline" method="POST">            
-                <div class="ui header">Add New cable Route</div>
+        <form action="/polygon" method="POST">            
+                <div class="ui header">Define a land section</div>
                   <div class="field">
-                        <label>Route Name</label>
-                        <input type="text" id="polytitle" name="title" >
+                        <label>Area name</label>
+                        <input type="text" id="polygontitle" name="title" >
                     </div>
                     {{!-- hidden field to handle polyline coordinates --}}                
                 <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">

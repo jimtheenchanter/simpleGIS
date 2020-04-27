@@ -2,33 +2,10 @@
 {{> welcomemenu }}
 
 <section class="ui raised segment">
- <!--  <div class="ui grid">
-    <aside class="ui six wide column">
-      <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1580301607/icons/Email-icon.png" class="ui medium image">
-    </aside>
-    <div class="ui ten wide column fluid form">
-      <div class="ui stacked segment">
-       <form action="/login" method="POST">
-          <h3 class="ui header">Log-in</h3>
-          <div class="field">
-            <label>Email</label>
-             <input placeholder="Email" type="text"
-              name="email">
-          </div>
-          <div class="field">
-            <label>Password</label> 
-            <input type="password" name="password">
-          </div>
-          <button class="ui blue submit button">Log In</button>
-        </form>
-            {{> error }}
-      </div>
-    </div>
-  </div>
--->
 
-        <div class="ui middle aligned center aligned grid">
-  <div class="column">
+<div class="ui middle aligned center aligned grid">
+          
+  <div class="column-form">
     <h2 class="ui teal image header">
       <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1580301607/icons/Email-icon.png" class="image">
       <div class="content">
@@ -55,9 +32,9 @@
       <div class="ui error message"></div>
 
     </form>
-
+{{> error }}
     <div class="ui message">
-      New to us? <a href="/signup">Sign Up</a>
+      New to us? <a href="/signup">Create account</a>
     </div>
   </div>
   </div>

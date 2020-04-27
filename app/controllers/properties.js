@@ -3,6 +3,7 @@
 const User = require('../models/user');
 const Property = require('../models/property');
 const Polyline = require('../models/polyline');
+const Polygon = require('../models/polygon');
 // const Map = require('..models/map');
 
 const Properties = {
@@ -10,15 +11,19 @@ const Properties = {
            handler: async function(request, h) {
               try{ // pass in the properties
                 // const id = request.auth.credentials.id;
-                const user = await User.findById;
-                
-               const properties = await Property.find().populate('agent');
+                // const user = await User.findById;
+                const id = request.auth.credentials.id;
+                const user = await User.findById(id);
+                const properties = await [Property.findAll];
+                // const totalProperties = properties.count();
+                const today = new Date();
+                var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
             return h.view('home', { 
-              title: 'Add a Property',
-              properties: properties, 
-              user: user
-              
-             
+              title: 'Dashboard',
+              properties: properties,
+              // totalproperties: totalProperties,
+              user: user,
+              date: date
              });
               }
            catch (err) {
@@ -26,17 +31,39 @@ const Properties = {
         }}
         },
 
+  addPropertyPage: {
+    handler: async function(request, h) {
+      try{ // pass in the properties
+        // const id = request.auth.credentials.id;
+        const user = await User.findById;
+        
+       const properties = await Property.find().populate('agent');
+    return h.view('addpropertypage', { 
+      title: 'Add a Property',
+      properties: properties, //pass in properties for map
+      user: user
+      
+     
+     });
+      }
+   catch (err) {
+    return h.view('main', {errors: [{message: err.message}]});
+}}
+},
+       
+
   report: {
     handler: async function(request, h) {
       try {
       const properties = await Property.find().populate('agent'); //get all the  properties
       const u_id = request.auth.credentials.id; // define the user id
       const polylines = await Polyline.find().populate('agent');
+      const polygons = await Polygon.find().populate('agent');
       //method to only show delete button for current user's properties
        for(let p in properties){
         console.log(properties[p].agent.id)
-        if(properties[p].agent.id == u_id){
-          properties[p].show_delete = true;
+        if(properties[p].agent.id == u_id){ // if agent for prop id matches current user id
+          properties[p].show_delete = true; // show delete boolean true 
         }else{
           properties[p].show_delete = false;
         }}
@@ -50,11 +77,30 @@ const Properties = {
             properties[p].show_edit = false;
           }
         }
+
+        for(let p in polylines){
+          console.log(polylines[p].agent.id)
+          if(polylines[p].agent.id == u_id){ // if agent for prop id matches current user id
+            polylines[p].show_delete = true; // show delete boolean true 
+          }else{
+            polylines[p].show_delete = false;
+          }}
+
+        for(let p in polygons){
+          console.log(polygons[p].agent.id)
+          if(polygons[p].agent.id == u_id){ // if agent for prop id matches current user id
+            polygons[p].show_delete = true; // show delete boolean true 
+          }else{
+            polygons[p].show_delete = false;
+          }}
+
+
     // pass the property data into the view 
       return h.view('report', {
         title: 'Properties to Date',
-        properties: properties, // reference to properties object
-        polylines: polylines
+        properties: properties, // reference to properties object for map and list
+        polylines: polylines,
+        polygons: polygons,
         
       });
      
@@ -117,7 +163,8 @@ updateProperty: {
       const propertyEdit = request.payload;
       const id = request.params.id;
       const property = await Property.findById(id);
-      property.eircode = propertyEdit.eircode;
+
+      property.eircode = propertyEdit.eircode; // error property eircode of null
       property.lat = propertyEdit.lat;
       property.long = propertyEdit.long;
    

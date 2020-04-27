@@ -55,13 +55,13 @@ auto start node at launch config user data
 su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
 
 #first ssh connection
-ssh -t -o StrictHostKeyChecking=no -i ~/20082197Demo.pem ec2-user@54.229.66.174 
+ssh -t -o StrictHostKeyChecking=no -i ~/jobrien_key.pem ec2-user@
 
 #subsequent connections
 ssh -i ~/20082197Demo.pem ec2-user@54.229.66.174
 
 #copy pem key to webserver (UNSAFE - for demo ssh purposes only)
-scp -i ~/20082197Demo.pem 20082197Demo.pem ec2-user@192.168.15.1:.
+.kry
 
 #Enter the following command to	have the system	always start the web server following a reboot:
 sudo systemctl enable httpd

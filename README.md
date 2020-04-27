@@ -73,6 +73,7 @@ https://developers.google.com/maps/documentation/javascript/kml
 
 Semantic UI
 https://semantic-ui.com/usage/layout.html
+http://learnsemantic.com/developing/customizing.html
 
 User Permissions
 https://stackoverflow.com/questions/43080150/handlebars-and-node-js-if-user-then-show-log-in-button

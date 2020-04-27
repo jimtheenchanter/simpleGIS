@@ -1,49 +1,60 @@
 <section class="ui raised segment">
-  <div class="ui grid">
-    <aside class="sixteen wide column">
+  
+    <div class="ui section">
+      <div class="map-section">
        {{> mapreport }}
-     
-      <table class="ui celled table segment">
-        <thead>
-          <tr>
-            <th>Eircode</th>
-            <th>Address</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Agent</th>
-            <th>Delete</th>
-            <th>Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-          {{#each properties}}
-            <tr>
-              <td> {{eircode}} </td>
-              <td> {{address}}</td>
-              <td> {{lat}}   </td>
-              <td> {{long}}   </td>
-              <td> {{agent.firstName}} {{agent.lastName}} </td>
-                <td> 
+     </div>
+<p>
+  
+</p>
+         {{#each properties}}
+           <div class="ui card">
+              <div class="content">
+               <div class="header">{{eircode}}
+                
+              <img src='https://res.cloudinary.com/jimtheenchanter/image/upload/v1587422142/icons/house-orange.png' class='houseicon'/>
+         
+               </div>
+                 <div class="meta"><a href="editproperty/{{id}}">{{address}}</a></div>
                   {{#if show_delete}}
-                        <a href="/deleteproperty/{{id}}" ><button  class="ui submit button">Del</button>  </a>
+                        <a href="/deleteproperty/{{id}}" ><button class="ui submit button">Del</button>  </a>
                         {{/if}}
-                         </td>
-                 <td> 
+   
+                      {{!-- {{#if show_edit}} //disabled due to bug property 'eircode' cannot be null --}}
+                        {{!-- <a href="/editproperty/{{id}}" ><button  class="ui button">View</button>  </a> --}}
+             {{!-- {{/if}} --}}
+             </div> 
+             
+{{!--                     
                   {{#if show_edit}}
                         <a href="/editproperty/{{id}}" ><button  class="ui button">Edit</button>  </a>
-                        {{/if}}
-                </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
+                        {{/if}} --}}
+           </div>
 
-      {{!-- {{#each polylines}}
-      <p>
-    {{title}} {{latlng}} {{agent.firstName}} <br>
-    </p>
-      {{/each}} --}}
-     </aside>
-  </div>
+         {{/each}} 
+     </div>
+
 </section>
+     
+   
+
+    {{#each polylines}}
+      <p>
+    {{title}} {{agent.firstName}}
+      {{#if show_delete}}
+                        <a href="/deletepolyline/{{id}}" ><button  class="ui submit button">Del</button>  </a>
+                        {{/if}}
+    </p>
+
+   {{/each}}
+
+
+      {{#each polygons}}
+      <p>
+    {{title}} {{agent.firstName}}
+      {{#if show_delete}}
+                        <a href="/deletepolygon/{{id}}" ><button  class="ui submit button">Del</button>  </a>
+                        {{/if}}
+    </p>
+
+   {{/each}}

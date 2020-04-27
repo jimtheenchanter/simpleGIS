@@ -3,17 +3,18 @@
 const Polyline = require('../models/polyline');
 const Property = require('../models/property');
 const User = require('../models/user');
+const Polygon = require('../models/polygon')
 
-const Polylines = {
+const Polygons = {
 
-    polyline: {  
+    polygon: {  // displayy main polygon view
         handler: async function(request, h) {
-           try{ // pass in the polylines
+           try{ // pass in the polygons
         
               const properties = await Property.find().populate()
                        ;
-         return h.view('polylinemain', { 
-          title: 'Add a Polyline',
+         return h.view('polygonmain', { 
+          title: 'Add a Polygon',
           properties: properties,
       
           });
@@ -24,13 +25,13 @@ const Polylines = {
      },
 
      // save the polyline data from polyline.hbs view
-     addPolyline: {
+     addPolygon: {
       handler: async function(request, h) {
         try {
           const id = request.auth.credentials.id;
           const user = await User.findById(id);
           const data = request.payload;
-               const newPolyline = new Polyline({
+               const newPolygon = new Polygon({
             title: data.title,
             latlng: [],
             agent: user._id
@@ -48,10 +49,10 @@ const Polylines = {
               }else{
                   obj.lng = Number(mini_arr[1]);
               }
-              newPolyline.latlng.push(obj)
+              newPolygon.latlng.push(obj)
           };
-          console.log(newPolyline.latlng)
-          await newPolyline.save();
+          console.log(newPolygon.latlng)
+          await newPolygon.save();
           return h.redirect('/report');
         } catch (err) {
           return h.view('main', { errors: [{ message: err.message }] });
@@ -59,11 +60,11 @@ const Polylines = {
       }
   },
 
-  deletePolyline: {
+  deletePolygon: {
     auth: false,
     handler: async function(request, h) {
-         const polyline = await Polyline.deleteOne({ _id: request.params.id });
-        if (polyline) {
+         const polygon = await Polygon.deleteOne({ _id: request.params.id });
+        if (polygon) {
                     return h.redirect('/report');
         }
          return Boom.notFound('id not found');
@@ -72,4 +73,4 @@ const Polylines = {
 
 
   }
-module.exports = Polylines;
+module.exports = Polygons;

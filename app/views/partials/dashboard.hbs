@@ -3,32 +3,39 @@
  <div class="row">
   
      <div class="ui header">
-         <h2> <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1588006231/icons/user-icon.png" /> &nbsp; 
-         {{user.firstName}} </h2>
-     <div class="caption">{{date}}</div>
+         <h3> <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1588006231/icons/user-icon.png" /> &nbsp; 
+         {{user.firstName}} </h3>
+     {{!-- <div class="caption">{{date}}</div> --}}
    </div>
 
  </div>
- <div class="row"> 
-     <div class="dashboard-menu">
-       <div class="ui two column grid">
-          
-             <a class="grid-item" href="/addpropertypage">
-                 <div class="dashboard-addproperty">+ Property </div>
+ <div class="row">
+          <div class="container">
+          <div class="grid">
+             <a class="grid-item1" href="/addpropertypage">
+                 <div class="dashboard-addproperty">
+                   <div class="dashboard-buttons">+ ADD PREMISES
+                     </div> </div>
              </a>
-             <a class="grid-item" href="/polylinemain">
-                <div class="dashboard-addpolyline">+ Polyline</div>
+             <a class="grid-item2" href="/polylinemain">
+                <div class="dashboard-addpolyline">
+                 <div class="dashboard-buttons">+ Draw a Route
+                   </div>
+                 </div>
             </a>
-         
-           
-            <a div class="grid-item" href="/report">
-                   <div class="dashboard-map">Map</div>
+                    
+            <a class="grid-item3" href="/report">
+                   <div class="dashboard-map">
+                     <div class="dashboard-buttons">
+                     Map
+                     </div></div>
              </a>
-            <a class="grid-item" href="/report">
-                    <div class="dashboard-report">Report</div>
+            <a class="grid-item4" href="/report">
+                    <div class="dashboard-report">
+                      <div class="dashboard-buttons">Report
+                      </div></div>
              </a>
-          
-       </div>
+          </div>
+          </div>
+          </div>
      </div>
-     </div> 
- </div>

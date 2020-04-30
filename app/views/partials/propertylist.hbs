@@ -42,19 +42,19 @@
       <p>
     {{title}} {{agent.firstName}}
       {{#if show_delete}}
-                        <a href="/deletepolyline/{{id}}" ><button  class="ui submit button">Del</button>  </a>
-                        {{/if}}
+      <a href="/deletepolyline/{{id}}" ><button  class="ui submit button">Del</button>  </a>
+      {{/if}}
     </p>
 
    {{/each}}
 
 
-      {{#each polygons}}
+  {{#each polygons}}
       <p>
     {{title}} {{agent.firstName}}
       {{#if show_delete}}
-                        <a href="/deletepolygon/{{id}}" ><button  class="ui submit button">Del</button>  </a>
-                        {{/if}}
+         <a href="/deletepolygon/{{id}}" ><button  class="ui submit button">Del</button>  </a>
+      {{/if}}
     </p>
 
    {{/each}}

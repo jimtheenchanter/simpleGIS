@@ -1,6 +1,28 @@
+*:root {
+   /* define custom colour palette */
+  --redred: #eb1c2c ;
+  --mustard: #d3a228 ;
+  --grassgreen: #249a49;
+  --bloodred: #c31c30;
+  --bloodorange: #ef4128;
+  --cleanblue: #00aedb;
+  --goldie: #ffb610 ;
+  --blackcurrant: #8e1838;
+  --orangina: #f36d24;
+  --chewypink: #e31486;
+  --flatorange: #fba02d;
+  --khakisuit: #cf8e28;
+  --armygreen: #49753c;
+  --trueblue: #007dbe;
+  --playgreen: #3cb249;
+  --bluecollar: #00558a;
+  --almostpurple: #00558a;
+
+
+}
+
 body, html {
-  
-    height:100%;
+      height:100%;
     background-image: url("https://res.cloudinary.com/jimtheenchanter/image/upload/v1587293456/SimpleGIS/smallnetwork.jpg")!important;
     background-position: center!important;
     background-repeat: no-repeat!important;
@@ -19,6 +41,7 @@ body, html {
     max-width: 450px;
     margin-bottom:4em;
     margin-top:2em;
+    color: var(--redred)!important;
   } 
   .map-section {
     text-align: center;
@@ -27,6 +50,7 @@ body, html {
 
   card-image {
   height: 200px;
+  
 }
 
 
@@ -35,6 +59,7 @@ body, html {
   width:25px;
   height: auto;
   margin:.25em;
+  
  
 }
 
@@ -47,10 +72,10 @@ body, html {
   left: 50%;
   padding: 2em;
   transform: translate(-50%, -50%);
-  color: grey;
-  background-color: whitesmoke;
+  color: whitesmoke;
+  background-color: #49753c;;
   background-blend-mode: overlay;
-  opacity: 1;
+  opacity: .9;
 
 }
 
@@ -63,11 +88,39 @@ h1 {
   text-align: center;
   font-size: 5em!important;
   font-weight: bold;
+
+}
+
+h2 {
+  text-align: center;
+  font-size: 4em!important;
+  font-weight: bold;
+  font-family:  'Lobster', Georgia, Times, serif!important;
+
+}
+
+h3 {
+  text-align: left;
+  font-size: 2em!important;
+  font-weight: bold;
+  font-family: 'Lobster';
+
+}
+
+
+
+.ui.card {
+  opacity:1;
 }
 
 p {
    font-size: 1em; 
    line-height: 2em!important;
+   font-family: 'Cabin', Helvetica, Arial, sans-serif;
+   font-size: 15px;
+   line-height: 25px;
+   margin-left:1.5em!important;
+   /* color: var(--redred)!important; */
   }
 
 
@@ -78,16 +131,19 @@ p {
   }
 
 .fluid.ui.button {
-  background-color: rgb(10, 122, 202)!important;
+  background-color: transparent!important;
+  
   /* color: white!important; */
   /* opacity: 100%!important; */
   border-radius: 2px;
+  border-style: solid;
+  border-color: whitesmoke;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   transition-duration: 0.4s;
  }
 
  .fluid.ui.button:hover {
-  background-color: rgb(47, 160, 241)!important; 
+  background-color: #cf8e28!important; 
  
  }
 
@@ -113,7 +169,18 @@ p {
   /* transform: translate(-50%, -50%); */
 }
 
-
+.container {
+  background-color: var(--armygreen);
+  display: inline-block;
+  text-align: center;
+  border: 0px ;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 80px);
+  grid-template-rows: repeat(2, 80px);
+  grid-gap: 0px;
+}
 
 .grid-container {
   display: inline-block;
@@ -121,13 +188,60 @@ p {
  
 }
 
-.grid-item {
-  padding: 2em;
-  background-image:url("https://res.cloudinary.com/jimtheenchanter/image/upload/v1588005198/SimpleGIS/map-invert-400sq.jpg");
-  width:50%;
-  height:auto;
+.grid-item1 {
+  color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: var(--cleanblue) ;
+  
   }
+ .grid-item2 {
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--bloodred) ;
+  
+    }
 
- .grid-item:hover {
-  background-color: rgb(47, 160, 241)!important; 
+  .grid-item3 {
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--blackcurrant) ;
+         }
+
+  .grid-item4 {
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--orangina) ;
+        }
+ .grid-item1:hover {
+  background-color:var(--goldie)!important; 
+  color: var(--mustard);
  } 
+
+ .grid-item2:hover {
+  background-color:var(--goldie)!important; 
+ } 
+ .grid-item3:hover {
+  background-color: var(--goldie)!important; 
+ } 
+ .grid-item4:hover {
+  background-color: var(--goldie)!important; 
+ } 
+
+ .ui.form {
+  /* position: absolute;
+  transform: translate(-50%, -50%); */
+ }
+
+ .dashboard-buttons {
+   font-family: 'Cabin' Arial, Helvetica, sans-serif;
+   font-size: larger;
+   font-weight: bold;
+ }

@@ -39,7 +39,21 @@ mymap.on('click', function(event) {
        L.marker([{{lat}}, {{long}}]).addTo(mymap);
     </script>
   {{/each}} 
-  
+    <div class="ui form">
+     <div class="ui stacked segment">
+        <form action="/polyline" method="POST">            
+                <div class="ui header">Add New cable Route</div>
+                  <div class="field">
+                        <label>Route Name</label>
+                        <input type="text" id="polytitle" name="title" >
+                    </div>
+                    {{!-- hidden field to handle polyline coordinates --}}                
+                <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
+        <p>  Click on the map to draw the line </p>
+           <button class="ui blue submit button">  Save </button>
+        </form>
+             </div>
+    </div>
     
 </section>
 

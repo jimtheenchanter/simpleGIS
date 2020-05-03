@@ -10,7 +10,7 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
-  agent: Boolean
+  admin: Boolean
 
     
 });

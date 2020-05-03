@@ -12,15 +12,18 @@ module.exports = [
 { method: 'GET', path: '/login', config: Accounts.showLogin },
 { method: 'GET', path: '/logout', config: Accounts.logout },
 { method: 'POST', path: '/signup', config: Accounts.signup },
+{ method: 'POST', path: '/adduser', config: Accounts.adduser },
+{ method: 'GET', path: '/addusermain', config: Accounts.showAdduser },
 { method: 'POST', path: '/login', config: Accounts.login },
 { method: 'GET', path: '/settings', config: Accounts.showSettings },
 { method: 'POST', path: '/settings', config: Accounts.updateSettings },
   // routes to handle property functions
 { method: 'GET', path: '/home', config: Properties.home }, //addproperty
+// { method: 'GET', path: '/dashboard', config: Accounts.}
 { method: 'GET', path: '/report', config: Properties.report },
 { method: 'GET', path: '/addpropertypage', config: Properties.addPropertyPage},
 { method: 'GET', path: '/editproperty/{id}', config: Properties.showProperty },
-{ method: 'POST', path: '/editproperty', config: Properties.updateProperty },
+{ method: 'POST', path: '/editproperty/{id}', config: Properties.updateProperty },
 { method: 'GET', path: '/deleteproperty/{id}', config: Properties.deleteProperty },
 { method: 'POST', path: '/property', config: Properties.addProperty },
 

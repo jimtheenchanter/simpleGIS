@@ -8,6 +8,8 @@ const propertySchema = new Schema({
   address: String,
   long: Number,
   lat: Number,
+  color: String,
+  comments: String,
   agent: {
     type: Schema.Types.ObjectId,
     ref: 'User'

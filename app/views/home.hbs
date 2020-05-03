@@ -1,9 +1,16 @@
-{{> mainmenu _id="home" }}
+
+
 
 <section class="ui raised segment">
- 
+{{#if user.admin}}
+{{> adminmenu _id="home" }}
+{{> propertylist }}
+{{else}}
+ {{> mainmenu _id="home"}}
+ {{> dashboard}}
+{{/if}} 
         
-  {{> dashboard}}
+ 
 
 
 </section>

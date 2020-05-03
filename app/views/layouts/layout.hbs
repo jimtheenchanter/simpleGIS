@@ -37,6 +37,10 @@
       $(document).ready(function () {
         $('.ui.dropdown').dropdown({on: 'hover'});
       });
+
+      $('select.dropdown')
+       .dropdown()
+      ;
       //display errors if an error object is passed to the view
       $('.message .close').on('click', function () {
         $(this).closest('.message').transition('fade');

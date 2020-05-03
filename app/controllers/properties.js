@@ -5,6 +5,13 @@ const Property = require('../models/property');
 const Polyline = require('../models/polyline');
 const Polygon = require('../models/polygon');
 // const Map = require('..models/map');
+const dotenv = require('dotenv');
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
+
 
 const Properties = {
   home: {  
@@ -15,11 +22,13 @@ const Properties = {
                 const id = request.auth.credentials.id;
                 const user = await User.findById(id);
                 const properties = await [Property.findAll];
+                const mapKey = process.env.mapKey;
                 // const totalProperties = properties.count();
                 const today = new Date();
                 var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
             return h.view('home', { 
               title: 'Dashboard',
+              mapKey: mapKey,
               properties: properties,
               // totalproperties: totalProperties,
               user: user,
@@ -36,14 +45,14 @@ const Properties = {
       try{ // pass in the properties
         // const id = request.auth.credentials.id;
         const user = await User.findById;
-        
-       const properties = await Property.find().populate('agent');
+        const properties = await Property.find().populate();
+        const mapKey = process.env.mapKey;
     return h.view('addpropertypage', { 
       title: 'Add a Property',
+      mapKey: mapKey,
       properties: properties, //pass in properties for map
       user: user
-      
-     
+           
      });
       }
    catch (err) {
@@ -59,6 +68,8 @@ const Properties = {
       const u_id = request.auth.credentials.id; // define the user id
       const polylines = await Polyline.find().populate('agent');
       const polygons = await Polygon.find().populate('agent');
+      const id = request.auth.credentials.id;
+      const user = await User.findById(id);
       //method to only show delete button for current user's properties
        for(let p in properties){
         console.log(properties[p].agent.id)
@@ -101,6 +112,7 @@ const Properties = {
         properties: properties, // reference to properties object for map and list
         polylines: polylines,
         polygons: polygons,
+        user: user
         
       });
      
@@ -121,6 +133,8 @@ addProperty: {
         address: data.address,
         long: data.long,
         lat: data.lat,
+        color: data.color,
+        comment: data.comment,
         agent: user._id
       });
       await newProperty.save();

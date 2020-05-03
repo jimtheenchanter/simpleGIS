@@ -1,18 +1,17 @@
 <section class="ui raised segment">
 
     <div class="ui header">
-      <p></p>
-      <h2>
+     
+      <h3>
         Add an area
-      </h2>
+      </h3>
    
     </div>
     <div class="ui form">
      <div class="ui stacked segment">
         <form action="/polygon" method="POST">            
-                <div class="ui header">Define a land section</div>
-                  <div class="field">
-                        <label>Area name</label>
+                       <div class="field">
+                        <label for="polygontitle">Area name</label>
                         <input type="text" id="polygontitle" name="title" >
                     </div>
                     {{!-- hidden field to handle polyline coordinates --}}                
@@ -20,7 +19,7 @@
         <p>  Click on the map to draw the line </p>
            <button class="ui blue submit button">  Save </button>
         </form>
-             </div>
+      </div>
     </div>
      
  

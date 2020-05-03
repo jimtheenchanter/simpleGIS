@@ -66,13 +66,77 @@ const Accounts = {
           firstName: payload.firstName,
           lastName: payload.lastName,
           email: payload.email,
-          password: hash
+          password: hash,
+          admin: false
         });
         user = await newUser.save(); // save newuser data as user
         request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
         return h.redirect('/login'); // redirect to login screen
       } catch (err) {
         return h.view('signup', { errors: [{ message: err.message }] });
+      }
+    }
+  },
+
+  showAdduser: {
+    auth: false,
+    handler: function(request, h) {
+      return h.view('addusermain', { title: 'Add new user' });
+    }
+  },
+
+  adduser: {
+    auth: false,
+    validate: {
+      //  schema which defines rules that our fields must adhere to. 
+      payload: Joi.object(  // must define a Joi object
+        {
+        firstName: Joi.string().regex(/^[A-Z][a-z]{2,}$/).required(),
+        lastName: Joi.string().required(),
+        email: Joi.string()
+          .email()
+          .required(), 
+        password: Joi.string().min(6).required()
+        })
+      ,
+    options: {
+        abortEarly: false,
+      },
+// handler to invoke of one or more of the fields fails the validation
+    failAction: function(request, h, error) {
+        return h
+          .view('signup', {
+            title: 'Sign up error',
+            errors: error.details
+          })
+          .takeover()
+          .code(400);
+          }
+        },
+
+    handler: async function(request, h) {
+      try {
+        const payload = request.payload; // accepts data from form
+        let user = await User.findByEmail(payload.email); //declares user
+        if (user) {  // check if user email already exists
+          const message = 'Email address is already registered';
+          throw Boom(message);
+        }
+
+        const hash = await bcrypt.hash(payload.password, saltRounds); // 
+
+        const newUser = new User({ //create new user based on user model
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          email: payload.email,
+          password: hash,
+          admin: false
+        });
+        user = await newUser.save(); // save newuser data as user
+        request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
+        return h.redirect('/home'); // redirect to login screen
+      } catch (err) {
+        return h.view('/adduser', { errors: [{ message: err.message }] });
       }
     }
   },

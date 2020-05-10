@@ -1,28 +1,26 @@
-<section class="ui raised segment">
 
-    <div class="ui header">
-      <p></p>
-      <h2>
-        Add a Cable Route
-      </h2>
-   
-    </div>
+
+  
     <div class="ui form">
      <div class="ui stacked segment">
         <form action="/polyline" method="POST">            
-                <div class="ui header">Add New cable Route</div>
+                <div class="ui header">  
+                  <h3>
+        Add a Cable Route
+      </h3></div>
                   <div class="field">
                         <label>Route Name</label>
-                        <input type="text" id="polytitle" name="title" >
+                        <input type="text" id="polytitle" name="title" placeholder="Enter Route Name">
                     </div>
                     {{!-- hidden field to handle polyline coordinates --}}                
                 <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
-        <p>  Click on the map to draw the line </p>
-           <button class="ui blue submit button">  Save </button>
+        <p>  Click on the map to draw the line 
+          <button class="ui blue submit button">  Save </button>
+        </p>
+           
         </form>
              </div>
     </div>
      
  
 
-</section>

@@ -7,7 +7,7 @@
     </style>
   <div id="mapid"></div>
     
- <script type="text/javascript">
+<script type="text/javascript">
         var mymap = L.map('mapid').setView([52.346425, -7.321243], 18);
         // create a base layer of map tiles
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
@@ -15,10 +15,13 @@
           attribution: '',
               maxZoom: 20,
           id: 'mapbox/satellite-v9',
-          accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
-         }).addTo(mymap);
+          accessToken: //' {{ mapKey }} ' 
+            'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'        
+         }).addTo(mymap); 
 
-                    var greenIcon = new L.Icon({
+          
+
+  var greenIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
@@ -55,7 +58,7 @@ mymap.on('click', function(event) {
   new L.Marker(event.latlng, {color: 'red', draggable: false}).addTo(mymap);
   polyline.addLatLng(event.latlng);
 
-// populate latlng input box with polyline LatLngs
+// populate hidden latlng input box with polyline LatLngs
   document.getElementById('latlng').value = polyline.getLatLngs();
 
 });
@@ -67,21 +70,8 @@ mymap.on('click', function(event) {
        L.marker([{{lat}}, {{long}}]).addTo(mymap);
     </script>
   {{/each}} 
-    <div class="ui form">
-     <div class="ui stacked segment">
-        <form action="/polyline" method="POST">            
-                <div class="ui header">Add New cable Route</div>
-                  <div class="field">
-                        <label>Route Name</label>
-                        <input type="text" id="polytitle" name="title" >
-                    </div>
-                    {{!-- hidden field to handle polyline coordinates --}}                
-                <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
-        <p>  Click on the map to draw the line </p>
-           <button class="ui blue submit button">  Save </button>
-        </form>
-             </div>
-    </div>
+    
+       
     
 </section>
 

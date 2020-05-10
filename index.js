@@ -27,7 +27,7 @@ async function init() {
 // only  start the server if the plugin is successfully loaded
  await server.register(require('hapi-auth-jwt2'));
 //  await server.register(require('@hapi/boom'));
- await server.register(require('@hapi/cookie'));
+  await server.register(require('@hapi/cookie'));
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));
   

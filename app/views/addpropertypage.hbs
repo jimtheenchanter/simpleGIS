@@ -1,17 +1,18 @@
 {{> mainmenu _id="addpropertypage" }}
 
 <section class="ui raised segment">
- <div class = "ui grid">
-   <div class = "six wide column">
- 
-       {{> property}}
+ {{!-- <div class = "ui grid"> --}}
+    <div class = "menu-pane">
+         {{> property}}
+    </div>
 
-   <div class="ui  divider"></div>
-
-   </div>
-
-   <div class = "ten wide column">
-   {{> map }}
-   </div>
-  </div>
+    <div class = "main">
+         {{> map }}
+    </div>
+    <div class="total Properties">
+ {{ totalproperties }}
+ </div>
+    {{!-- <div id="footer">
+      {{> footer}} 
+       </div> --}}
 </section>

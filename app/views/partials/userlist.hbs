@@ -1,0 +1,26 @@
+
+<table class="ui single line table" id="userlist">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Registration Date</th>
+      <th>E-mail address</th>
+      <th>Activities</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  
+{{#each users}}
+<tbody>
+    <tr>
+      <td>{{firstName}} &nbsp; {{lastName}} </td>
+      <td>{{date}}</td>
+      <td>{{email}}</td>
+      <td><div class="ui badge">17</div></td>
+       <td><a href="/deleteuser/{{id}}" ><i class="orange trash icon"></i> </a>
+   </td>
+    </tr>
+  
+{{/each}}
+</tbody>
+</table>

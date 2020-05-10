@@ -2,21 +2,28 @@
 
 const Polyline = require('../models/polyline');
 const Property = require('../models/property');
+const Polygon = require('../models/polygon');
 const User = require('../models/user');
+const dotenv = require('dotenv');
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
+
 
 const Polylines = {
 
     polyline: {  
         handler: async function(request, h) {
            try{ // pass in the polylines
-        
-              const properties = await Property.find().populate()
-                       ;
+        const properties = await Property.find().populate();  
+        const mapAPIKey = process.env.mapKey;            
          return h.view('polylinemain', { 
           title: 'Add a Polyline',
+          mapKey: mapAPIKey,
           properties: properties,
-      
-          });
+        });
            }
         catch (err) {
          return h.view('main', {errors: [{message: err.message}]});

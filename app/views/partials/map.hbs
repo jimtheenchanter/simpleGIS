@@ -1,11 +1,7 @@
  <section>
-   <style>
-        #mapid {
-            height: 600px;
-            width: 100%;
-        }
-    </style>
+
   <div id="mapid"></div>
+ 
 
 
  <script type="text/javascript">
@@ -17,8 +13,8 @@
               maxZoom: 18,
           id: 'mapbox/streets-v11',
           accessToken:
-          //' {{mapKey}} '
-        'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ' 
+           '{{ mapKey }} '
+        // 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
          }).addTo(mymap);
 
 
@@ -74,7 +70,7 @@ function onMapClick(e) {
        L.marker([ {{lat}}, {{long}}],  {icon: {{color}} }).addTo(mymap).bindPopup(` {{eircode}} , {{address}} <br> {{comments}} `);
     </script>
   {{/each}} 
-  
+ 
     
 </section>
 

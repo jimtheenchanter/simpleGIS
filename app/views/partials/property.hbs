@@ -1,18 +1,19 @@
-<section class="ui raised segment">
+
  
-    <div class="ui header">
-      <h2>
-        Add a premises
-      </h2>
-          </div>
     <div class="ui form">
      <div class="ui stacked segment">
         <form action="/property" method="POST">
                    {{!-- <input type="hidden" name="property"> --}}
          
+    <div class="ui header">
+      <h4>
+        Add a premises
+      </h4>
+          </div>
                     <div class="field">
-                        <label>Eircode</label>&nbsp; <div class="eircode-finder"> <a href="https://www.eircode.ie/" target="_blank" newwindow="true"><em>EIRCODE FINDER</em></a></div>
+                        <label>Eircode</label>
                         <input type="text" id="eircode" name="eircode" >
+                        <div id="eircode-finder"> <a href="https://www.eircode.ie/" target="_blank" newwindow="true"><em>Eircode Finder</em></a></div>
                     </div>
 
               <div class="field">
@@ -25,15 +26,15 @@
                </div>
 
                <div class="field">
-                 <label for="color">Color</label>
-                 <select class="ui dropdown" id="color" name="color">
+                 <label for="color">Marker Color</label>
+                 <select class="ui dropdown" id="color" name="color" aria-placeholder="Choose colour">
                    <option value="greenIcon" name="greenIcon" id="greenIcon">Green</option>
                    <option value="yellowIcon" name="yellowIcon" id="yellowIcon">Yellow</option>
                    <option value="redIcon" name="redIcon" id="redIcon">Red</option>
                   </select>
               </div>
-                   <div class="ui header">Geo Location</div>
-                   <div class="ui caption">Type the latitude and longitude of the property below or just click on the map.</div>
+                   
+                   <div class="ui caption">Enter the coordinates of the property or just click on the map.</div>
                     <div class="ui two fields">
                      
                      <div class="field">
@@ -53,6 +54,7 @@
                   
            <button class="ui blue submit button"> + Add </button>
         </form>
+             {{> error }}
       </div>
     </div>
-   </section>
+   

@@ -2,6 +2,9 @@
 
 const Boom = require('@hapi/boom');
 const User = require('../models/user');
+const Property = require('../models/property');
+const Polyline = require('../models/polyline');
+const Polygon = require('../models/polygon');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Joi = require('joi');
@@ -61,13 +64,17 @@ const Accounts = {
         }
 
         const hash = await bcrypt.hash(payload.password, saltRounds); // 
+        // var d = Date(Date.now()); 
+        var d = new Date();
+        var a = d.toDateString();
 
         const newUser = new User({ //create new user based on user model
           firstName: payload.firstName,
           lastName: payload.lastName,
           email: payload.email,
           password: hash,
-          admin: false
+          admin: false,
+          date: a,
         });
         user = await newUser.save(); // save newuser data as user
         request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
@@ -130,13 +137,14 @@ const Accounts = {
           lastName: payload.lastName,
           email: payload.email,
           password: hash,
-          admin: false
+          admin: payload.admin,
+          date: Date.now(),
         });
         user = await newUser.save(); // save newuser data as user
-        request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
-        return h.redirect('/home'); // redirect to login screen
+        // request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
+        return h.redirect('addusermain'); // redirect to login screen
       } catch (err) {
-        return h.view('/adduser', { errors: [{ message: err.message }] });
+        return h.view('addusermain', { errors: [{ message: err.message }] });
       }
     }
   },
@@ -261,7 +269,41 @@ const Accounts = {
     }
   },
 
-  logout: {
+  showUsers: {
+    handler: async function(request, h) {
+      try {
+      // const properties = await Property.find().populate('agent'); //get all the  properties
+      // const u_id = request.auth.credentials.id; // define the user id
+      // const polylines = await Polyline.find().populate('agent');
+      // const polygons = await Polygon.find().populate('agent');
+      // const id = request.auth.credentials.id;
+      const users = await User.find();  
+    // pass the property data into the view 
+      return h.view('showusers', {
+        title: 'All registered Users',
+        users: users
+        
+      });
+     
+      // any errors should redirect back to main page
+    }catch (err) {
+      return h.view('main', {errors: [{message: err.message}]});
+  }} 
+  },
+
+
+  deleteUser: {
+    auth: false,
+    handler: async function(request, h) {
+      const user = await User.deleteOne({ _id: request.params.id });
+        if (user) { 
+         return h.redirect('/showusers');
+        }
+         return Boom.notFound('id not found');
+    }
+  },
+
+    logout: {
     handler: function(request, h) {
      //clear cookie on logout
       request.cookieAuth.clear(); 

@@ -10,7 +10,8 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
-  admin: Boolean
+  admin: Boolean,
+  date: String,
 
     
 });

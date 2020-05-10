@@ -1,13 +1,10 @@
- <section class= "ui section">
+ <section>
    <style>
-        #mapid {
-            height: 600px;
-            width: 100%;
-        }
+    
     </style>
   <div id="mapid"></div>
     
- <script type="text/javascript">
+  <script type="text/javascript">
         var mymap = L.map('mapid').setView([52.346425, -7.321243], 18);
         // create a base layer of map tiles
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
@@ -15,7 +12,9 @@
           attribution: '',
               maxZoom: 20,
           id: 'mapbox/satellite-v9',
-          accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
+          accessToken: 
+          '{{ mapKey }} '
+          // 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'        
          }).addTo(mymap);
 
 
@@ -32,7 +31,7 @@ mymap.on('click', function(event) {
 
 });
 
-  </script> 
+</script> 
 {{!-- Iterate through the properties to add markers --}}
   {{#each properties}}
     <script>    

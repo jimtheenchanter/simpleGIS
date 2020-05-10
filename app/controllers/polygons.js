@@ -3,20 +3,29 @@
 const Polyline = require('../models/polyline');
 const Property = require('../models/property');
 const User = require('../models/user');
-const Polygon = require('../models/polygon')
+const Polygon = require('../models/polygon');
+const dotenv = require('dotenv');
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
 
 const Polygons = {
 
     polygon: {  // displayy main polygon view
         handler: async function(request, h) {
            try{ // pass in the polygons
-        
-              const properties = await Property.find().populate()
-                       ;
-         return h.view('polygonmain', { 
+  
+            const properties = await Property.find().populate();
+            const mapAPIKey = process.env.mapKey;
+       return h.view('polygonmain', { 
           title: 'Add a Polygon',
+          mapKey: mapAPIKey,
           properties: properties,
-      
+         
+          
+          
           });
            }
         catch (err) {

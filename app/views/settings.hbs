@@ -1,4 +1,9 @@
+{{#if admin}}
+{{> adminmenu _id="settings" }}
+{{else}}
 {{> mainmenu _id="settings" }}
+{{/if}}
+
 
 <section class="ui raised segment">
   <div class="ui grid">
@@ -10,7 +15,7 @@
           <div class="two fields">
             <div class="field">
               <label>First Name</label>
-              <input value="{{user.firstName}}" type="text" name="firstName" placeholder="{{user.firstName}}">
+              <input value="{{user.firstName}}" type="text" name="firstName" >
             </div>
             <div class="field">
               <label>Last Name</label>

@@ -1,4 +1,4 @@
-<section class="ui raised segment">
+
   <div class="ui grid">
     <div class="ui ten wide column">
       <div class="ui stacked fluid form segment">
@@ -22,6 +22,14 @@
             <label>Password</label>
             <input type="password" name="password">
           </div>
+          <div class="field">
+            <label>Account type</label>
+            <select class="ui dropdown" id="admin"  aria-placeholder="Account type">
+                   <option value="false" name="user" id="false">User</option>
+                   <option value="true" name="admin" id="true">Admin</option>
+                   {{!-- <option value="redIcon" name="redIcon" id="redIcon">Red</option> --}}
+                  </select>
+          </div>
           <button class="ui blue submit button">Submit</button>
         </form>
         {{> error}}
@@ -31,4 +39,3 @@
       <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1580301607/icons/Email-icon.png" class="ui medium image">
     </aside>
   </div>
-</section>

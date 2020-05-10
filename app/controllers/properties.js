@@ -4,6 +4,7 @@ const User = require('../models/user');
 const Property = require('../models/property');
 const Polyline = require('../models/polyline');
 const Polygon = require('../models/polygon');
+const Note = require('../models/note');
 // const Map = require('..models/map');
 const dotenv = require('dotenv');
 const result = dotenv.config();
@@ -22,15 +23,17 @@ const Properties = {
                 const id = request.auth.credentials.id;
                 const user = await User.findById(id);
                 const properties = await [Property.findAll];
-                const mapKey = process.env.mapKey;
+                // const notes = await Note.findAll;
+                const mapAPIKey = process.env.mapKey;
                 // const totalProperties = properties.count();
                 const today = new Date();
                 var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
             return h.view('home', { 
               title: 'Dashboard',
-              mapKey: mapKey,
+              mapKey: mapAPIKey,
               properties: properties,
-              // totalproperties: totalProperties,
+              // notes: notes,
+              totalproperties:properties.length,
               user: user,
               date: date
              });
@@ -46,10 +49,10 @@ const Properties = {
         // const id = request.auth.credentials.id;
         const user = await User.findById;
         const properties = await Property.find().populate();
-        const mapKey = process.env.mapKey;
+        const mapAPIKey = process.env.mapKey;
     return h.view('addpropertypage', { 
       title: 'Add a Property',
-      mapKey: mapKey,
+      mapKey: mapAPIKey,
       properties: properties, //pass in properties for map
       user: user
            
@@ -70,6 +73,7 @@ const Properties = {
       const polygons = await Polygon.find().populate('agent');
       const id = request.auth.credentials.id;
       const user = await User.findById(id);
+      const mapAPIKey = process.env.mapKey;
       //method to only show delete button for current user's properties
        for(let p in properties){
         console.log(properties[p].agent.id)
@@ -105,16 +109,16 @@ const Properties = {
             polygons[p].show_delete = false;
           }}
 
-
     // pass the property data into the view 
       return h.view('report', {
         title: 'Properties to Date',
         properties: properties, // reference to properties object for map and list
         polylines: polylines,
         polygons: polygons,
-        user: user
-        
-      });
+        user: user,
+        mapkey: mapAPIKey,
+        numOfProperties: properties.length,
+        });
      
       // any errors should redirect back to main page
     }catch (err) {
@@ -161,9 +165,11 @@ showProperty : {
   handler: async function(request, h) {
     try {
       const id = request.params.id;
+      const mapAPIKey = process.env.mapKey;
       const property = await Property.findById(id); // use the property with matching ID
       return h.view('editproperty', { 
         title: 'Edit Property', 
+        mapKey: mapAPIKey,
         property: property });
     } catch (err) {
       return h.view('home', { errors: [{ message: err.message }] });
@@ -182,7 +188,7 @@ updateProperty: {
       property.lat = propertyEdit.lat;
       property.long = propertyEdit.long;
    
-      await property.save();
+      await property.save(id);
         console.log("Update successful")
       return h.redirect('/report');
 

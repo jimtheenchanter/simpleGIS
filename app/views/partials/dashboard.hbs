@@ -1,46 +1,54 @@
 
 
- <div class="row">
-  
-     <div class="ui header">
-         <h3> <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1588006231/icons/user-icon.png" /> &nbsp; 
-         {{user.firstName}} </h3>
-     {{!-- <div class="caption">{{date}}</div> --}}
-   </div>
-
- </div>
- <div class="row">
-          <div class="grid-container">
-          <div class="grid">
-             <a class="grid-item1" href="/addpropertypage">
+{{!-- <div class="login-container"> --}}
+ {{!-- <div class="menu-pane"> --}}
+   
+        <div class="vertical-menu">
+          <h3>Start Mapping!</h3>
+                     <a class="grid-item1" href="/addpropertypage">
                  <div class="dashboard-addproperty">
-                   <div class="dashboard-buttons">+ ADD PREMISES
-                     </div> </div>
+                   <div class="dashboard-buttons">
+                     <i class="map marker alternate icon"></i>
+                        Add Marker
+                     </div> 
+                  </div>
              </a>
              <a class="grid-item2" href="/polylinemain">
                 <div class="dashboard-addpolyline">
-                 <div class="dashboard-buttons">+ Draw a Route
+                 <div class="dashboard-buttons">
+                    <i class="pencil alternate icon"></i>
+                       Draw Polyline
                    </div>
                  </div>
             </a>
                     
-            <a class="grid-item3" href="/report">
-                   <div class="dashboard-map">
+            <a class="grid-item3" href="/polygonmain">
+                   <div class="dashboard-addpolygon">
                      <div class="dashboard-buttons">
-                     Map
-                     </div></div>
+                        <i class="object group outline icon"></i>
+                        Define Area 
+                        </div></div>
              </a>
             <a class="grid-item4" href="/report">
                     <div class="dashboard-report">
-                      <div class="dashboard-buttons">Report
+                      <div class="dashboard-buttons">
+                        <i class="table icon"></i>
+                         View Report
                       </div></div>
              </a>
+             <a class="grid-item5" href="/notemain">
+                    <div class="dashboard-notes">
+                      <div class="dashboard-buttons">
+                        <i class="sticky note outline icon"></i>
+                         Make a Note
+                       </div>
+                      </div>
+             </a>
           </div>
-          </div>
-          </div>
+  {{!-- </div> --}}
 
-          <div class = "row">
-              {{> note}}
+  {{!-- <div class="main">
+    {{> mapreport }}  
+  </div> --}}
 
-          </div>
-
+{{!-- </div> --}}

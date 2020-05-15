@@ -1,0 +1,22 @@
+<div class="table-wrapper-wrapper">
+ <div class="table-wrapper"> 
+  <table class="ui celled padded table">
+   <tbody>
+    {{#each notes }}
+    <tr>
+      <td>
+       {{ comment }}
+        <div class="meta"> {{ date }} </div>
+      </td><td>
+       {{ agent.firstName }}
+       
+      </td>
+      <td>
+        <a href="/deletenote/{{id}}" ><i class="ui trash icon"> </i> </a>
+      </td>
+    </tr>
+      {{/each}}
+  </tbody>
+  </table>
+ </div>  
+</div>

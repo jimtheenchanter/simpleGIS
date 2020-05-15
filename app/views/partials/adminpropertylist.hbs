@@ -32,9 +32,7 @@
          <a href="/editproperty/{{id}}" > View   </a>
       </td>
       <td>
-          {{#if show_delete}}
-        <a href="/deleteproperty/{{id}}" ><i class="ui trash icon"> </i> </a>
-        {{/if}}
+         <a href="/deleteproperty/{{id}}" ><i class="ui trash icon"> </i> </a>
       </td>
       </tr>
      {{/each}}
@@ -54,7 +52,7 @@
   <div class="header-report"> 
      <h3><div class="ui orange large label"> {{ numOfPolygons }} </div> &nbsp;
      <i class="object group outline large icon"></i> 
-     Areas on your Map</h3> </div>
+         Areas on your Map</h3> </div>
       <div class="table-wrapper"> 
     
       <table class="ui celled padded table">
@@ -66,8 +64,8 @@
            </th>
          </thead>
         <tbody>
-         {{#each polygons }}
-        <tr>
+           {{#each polygons }}  
+              <tr>
           <td>
               {{ title }}
           </td>
@@ -75,11 +73,8 @@
         <td>
           {{ agent.firstName }} &nbsp; {{ agent.lastName }}
         </td>
-      
       <td>
-          {{#if show_delete}}
         <a href="/deletepolygon/{{id}}" ><i class="ui trash icon"> </i> </a>
-        {{/if}}
       </td>
       </tr>
      {{/each}}
@@ -97,17 +92,13 @@
 
 
 <section class="ui raised segment">
-    
-<div class="table-wrapper-wrapper">
-
-  <div class="header-report"> 
-    
-   <h3>
+  <div class="table-wrapper-wrapper">
+   <div class="header-report"> 
+     <h3>
      <div class="ui orange large label"> {{ numOfPolylines }} </div> &nbsp;
      <i class="ui  pencil large icon"></i> Routes on your Map</h3> </div>
 
-        <div class="table-wrapper"> 
-    
+    <div class="table-wrapper"> 
       <table class="ui celled padded table">
          <thead>
            <th>Title</th>
@@ -116,7 +107,7 @@
              <div class="meta">Owners Only</div>
            </th>
          </thead>
-               <tbody>
+        <tbody>
          {{#each polylines }}
         <tr>
           <td>
@@ -126,24 +117,22 @@
           {{ agent.firstName }} &nbsp; {{ agent.lastName }}
         </td>
            <td>
-          {{#if show_delete}}
-        <a href="/deletepolyline/{{id}}" ><i class="ui trash icon"> </i> </a>
-        {{/if}}
-      </td>
+          <a href="/deletepolyline/{{id}}" ><i class="ui trash icon"> </i> </a>
+         </td>
       </tr>
      {{/each}}
   </tbody>
   </table>
 
-    <div class="total-label">
+  <div class="total-label">
        <div class="ui large label">
        <i class="pencil large alternate icon"></i> {{numOfPolylines}}
        </div>
      </div>
   </div> 
  </div>
-</section>
 
+</section>
 
 
 

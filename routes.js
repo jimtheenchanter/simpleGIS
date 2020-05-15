@@ -38,9 +38,9 @@ module.exports = [
 { method: 'POST', path: '/polygon', config: Polygons.addPolygon },
 { method: 'GET', path: '/deletepolygon/{id}', config: Polygons.deletePolygon },
 
-{ method: 'GET', path: '/addnote', config: Notes.note },
+{ method: 'GET', path: '/notemain', config: Notes.note },
 { method: 'POST', path: '/addnote', config: Notes.addNote },
-
+{ method: 'GET' , path: '/deletenote/{id}', config: Notes.deleteNote },
 // routes for static pages
 
 {    method: 'GET', 

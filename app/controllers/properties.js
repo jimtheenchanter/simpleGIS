@@ -15,15 +15,16 @@ if (result.error) {
 
 
 const Properties = {
-  home: {  
+  home: {  // dashboard view
            handler: async function(request, h) {
-              try{ // pass in the properties
-                // const id = request.auth.credentials.id;
-                // const user = await User.findById;
+              try{ // pass in the data for the map
                 const id = request.auth.credentials.id;
                 const user = await User.findById(id);
-                const properties = await [Property.findAll];
-                // const notes = await Note.findAll;
+                // const properties = await [Property.findAll];
+                const properties = await Property.find().populate('agent');
+                const polylines = await Polyline.find().populate('agent');
+                const polygons = await Polygon.find().populate('agent');
+                const notes = await Note.find();
                 const mapAPIKey = process.env.mapKey;
                 // const totalProperties = properties.count();
                 const today = new Date();
@@ -32,7 +33,9 @@ const Properties = {
               title: 'Dashboard',
               mapKey: mapAPIKey,
               properties: properties,
-              // notes: notes,
+              polygons: polygons,
+              polylines: polylines,
+              notes: notes,
               totalproperties:properties.length,
               user: user,
               date: date
@@ -64,7 +67,7 @@ const Properties = {
 },
        
 
-  report: {
+report: {
     handler: async function(request, h) {
       try {
       const properties = await Property.find().populate('agent'); //get all the  properties
@@ -86,8 +89,8 @@ const Properties = {
         //only show edit field for agents own entries
         for(let p in properties){
           console.log(properties[p].agent.id)
-          if(properties[p].agent.id == u_id){
-            properties[p].show_edit = true;
+          if(properties[p].agent.id == u_id){ // if agent for prop id matches current user id
+            properties[p].show_edit = true;  // show delete boolean true 
           }else{
             properties[p].show_edit = false;
           }
@@ -95,16 +98,16 @@ const Properties = {
 
         for(let p in polylines){
           console.log(polylines[p].agent.id)
-          if(polylines[p].agent.id == u_id){ // if agent for prop id matches current user id
-            polylines[p].show_delete = true; // show delete boolean true 
+          if(polylines[p].agent.id == u_id){ 
+            polylines[p].show_delete = true; 
           }else{
             polylines[p].show_delete = false;
           }}
 
         for(let p in polygons){
           console.log(polygons[p].agent.id)
-          if(polygons[p].agent.id == u_id){ // if agent for prop id matches current user id
-            polygons[p].show_delete = true; // show delete boolean true 
+          if(polygons[p].agent.id == u_id){ 
+            polygons[p].show_delete = true; 
           }else{
             polygons[p].show_delete = false;
           }}
@@ -118,6 +121,8 @@ const Properties = {
         user: user,
         mapkey: mapAPIKey,
         numOfProperties: properties.length,
+        numOfPolygons: polygons.length,
+        numOfPolylines: polylines.length,
         });
      
       // any errors should redirect back to main page
@@ -142,7 +147,7 @@ addProperty: {
         agent: user._id
       });
       await newProperty.save();
-      return h.redirect('/report');
+      return h.redirect('/home');
     } catch (err) {
       return h.view('main', { errors: [{ message: err.message }] });
     }
@@ -167,7 +172,7 @@ showProperty : {
       const id = request.params.id;
       const mapAPIKey = process.env.mapKey;
       const property = await Property.findById(id); // use the property with matching ID
-      return h.view('editproperty', { 
+            return h.view('editproperty', { 
         title: 'Edit Property', 
         mapKey: mapAPIKey,
         property: property });
@@ -183,12 +188,10 @@ updateProperty: {
       const propertyEdit = request.payload;
       const id = request.params.id;
       const property = await Property.findById(id);
-
       property.eircode = propertyEdit.eircode; // error property eircode of null
       property.lat = propertyEdit.lat;
       property.long = propertyEdit.long;
-   
-      await property.save(id);
+         await property.save(id);
         console.log("Update successful")
       return h.redirect('/report');
 

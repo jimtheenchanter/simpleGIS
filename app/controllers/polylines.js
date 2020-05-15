@@ -18,11 +18,15 @@ const Polylines = {
         handler: async function(request, h) {
            try{ // pass in the polylines
         const properties = await Property.find().populate();  
+        const polygons = await Polygon.find().populate();
+        const polylines = await Polyline.find().populate();
         const mapAPIKey = process.env.mapKey;            
          return h.view('polylinemain', { 
           title: 'Add a Polyline',
           mapKey: mapAPIKey,
           properties: properties,
+          polygons: polygons,
+          polylines: polylines,
         });
            }
         catch (err) {
@@ -59,7 +63,7 @@ const Polylines = {
           };
           console.log(newPolyline.latlng)
           await newPolyline.save();
-          return h.redirect('/report');
+          return h.redirect('/home');
         } catch (err) {
           return h.view('main', { errors: [{ message: err.message }] });
         }

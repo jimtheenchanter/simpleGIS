@@ -9,7 +9,7 @@ const propertySchema = new Schema({
   long: Number,
   lat: Number,
   color: String,
-  comments: String,
+  comment: String,
   agent: {
     type: Schema.Types.ObjectId,
     ref: 'User'

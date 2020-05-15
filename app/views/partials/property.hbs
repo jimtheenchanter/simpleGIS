@@ -3,56 +3,56 @@
     <div class="ui form">
      <div class="ui stacked segment">
         <form action="/property" method="POST">
-                   {{!-- <input type="hidden" name="property"> --}}
-         
-    <div class="ui header">
-      <h4>
-        Add a premises
-      </h4>
-          </div>
-                    <div class="field">
-                        <label>Eircode</label>
-                        <input type="text" id="eircode" name="eircode" >
-                        <div id="eircode-finder"> <a href="https://www.eircode.ie/" target="_blank" newwindow="true"><em>Eircode Finder</em></a></div>
-                    </div>
-
-              <div class="field">
-                        <label>Address</label>
-                        <input type="text" id="address" name="address" >
-                    </div>
-                <div class="field">
-                <label>Comments</label>
-                <textarea id="comments" name="comments"></textarea>
-               </div>
-
-               <div class="field">
-                 <label for="color">Marker Color</label>
-                 <select class="ui dropdown" id="color" name="color" aria-placeholder="Choose colour">
-                   <option value="greenIcon" name="greenIcon" id="greenIcon">Green</option>
-                   <option value="yellowIcon" name="yellowIcon" id="yellowIcon">Yellow</option>
-                   <option value="redIcon" name="redIcon" id="redIcon">Red</option>
-                  </select>
-              </div>
-                   
-                   <div class="ui caption">Enter the coordinates of the property or just click on the map.</div>
-                    <div class="ui two fields">
+             
+          <div class="ui header">
+            <h3> Add Marker </h3>
+               <p>Click on the map to get coordinates</p>
+           </div>
+           <div class="ui two fields">
                      
                      <div class="field">
                          <div class="ui text box">
-                            <label>Longitude </label>
+                          <div class="label-add-form">Longitude </div>
                             <input type="text" id="long" name="long" placeholder="0.000000" accept="integer/*" maxlength="20">
                         </div>
                     </div>
 
                      <div class="field">
                         <div class="ui text box">
-                            <label>Latitude </label>
+                            <div class="label-add-form">Latitude </div>
                             <input type="text" id="lat" name="lat" placeholder="0.000000" accept="integer/*" maxlength="20">
                         </div>
                       </div>
                     </div>
+
+            <div class="field">
+                     <div class="label-add-form">Address</div>
+                     <input type="text" id="address" name="address" >
+                 </div>    
+               <div class="ui two fields">
+                   <div class="field">
+                     <div class="label-add-form" for="color">Marker Color</div>
+                     <select class="ui dropdown" id="color" name="color" aria-placeholder="Choose colour">
+                       <option value="greenIcon" name="greenIcon" id="greenIcon">Green</option>
+                       <option value="yellowIcon" name="yellowIcon" id="yellowIcon">Yellow</option>
+                       <option value="redIcon" name="redIcon" id="redIcon">Red</option>
+                      </select>
+                         </div>
+                   
+                    <div class="field">
+                        <div class="label-add-form">Eircode</div>
+                        <input type="text" id="eircode" name="eircode" >
+                        <div id="eircode-finder"> <a href="https://www.eircode.ie/" target="_blank" newwindow="true"><em>Eircode Finder</em></a></div>
+                    </div>
+              </div>
+              
+             <div class="field">
+                <div class="label-add-form">Comments</div>
+                <textarea id="comment" name="comment"></textarea>
+               </div>
+              
                   
-           <button class="ui blue submit button"> + Add </button>
+           <button class="ui fluid large submit button"> <i class="save outline icon"> </i> Save</button>
         </form>
              {{> error }}
       </div>

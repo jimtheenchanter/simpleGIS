@@ -1,45 +1,58 @@
 
-{{> welcomemenu }}
+{{!-- {{> welcomemenu }} --}}
 
-<section class="ui raised segment">
 
-<div class="ui middle aligned center aligned grid">
-          
+
+<div class="login-container">
   <div class="column-form">
-    
-   
-    <form class = " ui form" action="/login" method="POST" class="ui large form">
-      <div class="ui stacked segment">
-        <div class="log in header">
-          <h3>Log in to your account</h3>
-        </div>
-         <div class="ui horizontal divider">
-   
-  </div>
+ 
+    <form class = "ui form" action="/login" method="POST" >
+     
+        <div class="login-header">
+          <div class="login-image">
+          <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1589366111/SimpleGIS/logo-simplegis-grey150.png" > 
+          </div>       
+       </div>
+     
+     <div id="login-fields-and-button">
         <div class="field">
+          <div class="login-label" for="email">Email</div>
           <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+            <i class="mail icon"></i>
+            <input type="text" name="email" placeholder="">
           </div>
         </div>
+
         <div class="field">
+            <div class="login-label" for="password">Password</div>
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" placeholder="">
           </div>
         </div>
-        <button class="ui fluid large submit button"><i class="sign in alternate icon"></i>Log In</button>
-      </div>
 
-      <div class="ui error message"></div>
+        <button class="ui fluid large submit button">
+           <div id="login"><i class="sign in alternate icon"></i>
+            Log In</div>
+        </button>
 
+         <div class="ui horizontal divider">
+          or
+        </div>
+     <a href="/signup" id="create-account">   Create account   </a> 
+         <div class="ui message">
+   
+       </div>
+
+      <div class="ui error message"> </div>
+       {{> error }}
+
+       </div>
     </form>
-{{> error }}
-    <div class="ui message">
-      New to us? <a href="/signup"> Create account</a>
-    </div>
+ 
+
   </div>
-  </div>
+</div>
 
     
-</section>
+

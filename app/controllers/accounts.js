@@ -127,7 +127,7 @@ const Accounts = {
         let user = await User.findByEmail(payload.email); //declares user
         if (user) {  // check if user email already exists
           const message = 'Email address is already registered';
-          throw Boom(message);
+          throw new Boom.badRequest(message);
         }
 
         const hash = await bcrypt.hash(payload.password, saltRounds); // 
@@ -185,12 +185,12 @@ const Accounts = {
         let user = await User.findByEmail(email); //validate that the user exists in the database
            if (!user) { //if email not recognised - send error message
              const message = 'Email address is not registered';
-             throw new Boom(message);
+             throw Boom.unauthorized(message);
            }
             // user.comparePassword(password);
             if (!await user.comparePassword(password)) {         // EDITED (next few lines)
               const message = 'Password mismatch';
-              throw new Boom(message);
+              throw Boom.unauthorized(message);
             } else {
 
 

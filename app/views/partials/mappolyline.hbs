@@ -1,12 +1,8 @@
  <section class= "ui section">
-   <style>
-        #mapid {
-            height: 600px;
-            width: 100%;
-        }
-    </style>
-  <div id="mapid"></div>
-    
+<div class="map-wrapper">
+    <div id="mapid"></div>
+ </div>
+   
 <script type="text/javascript">
         var mymap = L.map('mapid').setView([52.346425, -7.321243], 18);
         // create a base layer of map tiles
@@ -15,7 +11,8 @@
           attribution: '',
               maxZoom: 20,
           id: 'mapbox/satellite-v9',
-          accessToken: //' {{ mapKey }} ' 
+          accessToken:
+         // ' {{ mapKey }} ' 
             'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'        
          }).addTo(mymap); 
 
@@ -67,11 +64,48 @@ mymap.on('click', function(event) {
 {{!-- Iterate through the properties to add markers --}}
   {{#each properties}}
     <script>    
-       L.marker([{{lat}}, {{long}}]).addTo(mymap);
+       L.marker([{{lat}}, {{long}}], {icon: {{color}} }).addTo(mymap);
     </script>
   {{/each}} 
     
-       
+    {{#each polylines}}
+    <script>
+
+      // create an array made up of lat lngs
+    arr = [];
+    {{#each latlng}}
+        console.log("{{this.lat}}  {{this.lng}}")
+        mini_arr = [];
+        mini_arr.push({{this.lat}});
+        mini_arr.push({{this.lng}});
+        arr.push(mini_arr);
+    {{/each}}
+      console.log(arr, "latlng array passed")
+      test = new L.polyline(arr);
+      test.addTo(mymap)
+  L.polyline(arr,  {color: 'orange', title: '{{title}}'}).addTo(mymap);
+    </script>
+  {{/each}}
+
+{{#each polygons}}
+    <script>
+
+      // create an array made up of lat lngs
+    arr = [];
+    {{#each latlng}}
+        console.log("{{this.lat}}  {{this.lng}}")
+        mini_arr = [];
+        mini_arr.push({{this.lat}});
+        mini_arr.push({{this.lng}});
+        arr.push(mini_arr);
+    {{/each}}
+      console.log(arr, "latlng array passed")
+      test = new L.polygon(arr);
+      test.addTo(mymap)
+  L.polygon(arr,  {color: 'blue', title: '{{title}}'}).addTo(mymap);
+
+    </script>
+  {{/each}}       
     
 </section>
 

@@ -1,22 +1,26 @@
 
-
-  
-    <div class="ui form">
-     <div class="ui stacked segment">
-        <form action="/polygon" method="POST">            
-                       <div class="field">
-                        <label for="polygontitle">
-                           <h3> Add an area </h3>
-                      </label>
-                        <input type="text" id="polygontitle" name="title" placeholder="Enter Area Name">
-                       </div>
-                    {{!-- hidden field to handle polyline coordinates --}}                
-                <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
-         <p>  Click on the map to draw the perimeter </p>
-           <button class="ui blue submit button">  Save </button>
-        </form>
-      </div>
-    </div>
+<div class="ui form">
+ <div class="ui stacked segment">
+    <form action="/polygon" method="POST">  
+    <div class="ui header">
+  <h3>
+    Add Area
+  </h3>
+   <p>  Click on the map to draw the perimeter </p>
+ </div>          
+           <div class="field">
+            <label for="polygontitle">
+                Title 
+          </label>
+            <input type="text" id="polygontitle" name="title" placeholder="Enter Area Name">
+           </div>
+        {{!-- hidden field to handle polyline coordinates --}}                
+            <input type="hidden" id="latlng" name="latlng" placeholder="" accept="integer/*" maxlength="1000">
+    
+       <button class="ui fluid large submit button"> <i class="save outline icon">  </i> Save</button>
+    </form>
+  </div>
+</div>
      
  
 

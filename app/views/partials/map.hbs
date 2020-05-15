@@ -1,8 +1,8 @@
  <section>
 
-  <div id="mapid"></div>
- 
-
+ <div class="map-wrapper">
+ <div id="mapid"></div>
+ </div> 
 
  <script type="text/javascript">
         var mymap = L.map('mapid').setView([52.345944, -7.321977], 16);
@@ -17,7 +17,7 @@
         // 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
          }).addTo(mymap);
 
-
+// arker.setLatLng(lat, lng);
 
 mymap.on('click', function(e) {
  var lat = e.latlng.lat;
@@ -31,8 +31,12 @@ mymap.on('click', function(e) {
 
 function onMapClick(e) {
          alert("You clicked the map at " + e.latlng);
+       new L.Marker(event.latlng, {color: 'red', draggable: false}).addTo(mymap);
+        
+          
         } 
-        mymap.on('click', onMapClick       
+
+        mymap.on('click', onMapClick     
         );
   
   var greenIcon = new L.Icon({

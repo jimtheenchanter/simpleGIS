@@ -1,19 +1,35 @@
- <nav class="ui inverted menu">
-  <header class="header item"><a href="/home"> <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1588235351/SimpleGIS/logo-simpleGis-text-white.png" width="50px"></a>
+ {{!-- <nav class="ui inverted menu" id="myTopNav">  --}}
+  <div class="topnav" id="myTopnav">
 
-  </header>
+  {{!-- <header class="header item"><a href="/home"> <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1588235351/SimpleGIS/logo-simpleGis-text-white.png" width="50px"></a>
+
+  </header> --}}
   <div class="right menu">
-    <a id="addpropertypage"  class= "item" href="/addpropertypage"> Add Property</a>
-    <a id="polygonmain"  class= "item" href="/polygonmain"> Add Area</a>
-    <a id="polylinemain"   class= "item" href="/polylinemain"> Add Route</a>
-    <a id="report" class= "item" href="/report"> Report</a>
-    <a id="settings" class= "item" href="/settings"> Settings</a>
-    <a id="logout" class= "item" href="/logout"> Logout</a>
+    <a id="home" class= "item" href="/home">  <i class="home icon"></i> Home</a>
+    <a id="addpropertypage" class= "item" href="/addpropertypage"> <i class="map marker alternate icon"></i> Add Property</a>
+    <a id="polygonmain" class= "item" href="/polygonmain">  <i class="object group outline icon"></i> Add Area</a>
+    <a id="polylinemain" class= "item" href="/polylinemain"><i class="pencil alternate icon"></i> Add Route</a>
+    <a id="report" class= "item" href="/report">  <i class="table icon"></i> Report</a>
+    <a id="notemain" class= "item" href="/notemain"><i class="sticky note outline icon"></i> Notes</a>
+    <a id="settings" class= "item" href="/settings"><i class="cog icon"></i>Settings</a>
+    <a id="logout" class= "item" href="/logout"><i class="sign-out icon"></i> Logout</a>
+      <a href="javascript:void(0);" class="burgericon" onclick="myFunction()">
+    <i class="bars icon"></i>
+  </a>
   </div>
-</nav>
+</div>
 
 <script>
   $("#{{_id}}").addClass("active item");
-</script>
+
  
-    
+  function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}   
+
+</script>

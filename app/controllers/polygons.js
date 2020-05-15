@@ -16,14 +16,16 @@ const Polygons = {
     polygon: {  // displayy main polygon view
         handler: async function(request, h) {
            try{ // pass in the polygons
-  
+            const polygons = await Polygon.find().populate();
+            const polylines = await Polyline.find().populate();
             const properties = await Property.find().populate();
             const mapAPIKey = process.env.mapKey;
        return h.view('polygonmain', { 
           title: 'Add a Polygon',
           mapKey: mapAPIKey,
           properties: properties,
-         
+          polygons: polygons,
+          polylines: polylines,
           
           
           });
@@ -62,7 +64,7 @@ const Polygons = {
           };
           console.log(newPolygon.latlng)
           await newPolygon.save();
-          return h.redirect('/report');
+          return h.redirect('/home');
         } catch (err) {
           return h.view('main', { errors: [{ message: err.message }] });
         }

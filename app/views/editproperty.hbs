@@ -1,39 +1,35 @@
-{{> mainmenu _id="editproperty" }}
+{{!-- {{> mainmenu _id="editproperty" }} --}}
 
+<section class="editproperty">
 
-<div class="ui form">
-     <div class="ui stacked segment">
-        <form action="/report" method="GET">
-                           
-                    <div class="field">
-                        <label>Eircode</label>
-                        <input value= "{{property.eircode}}" type="text"  name="eircode" >
-                    </div>
-
-                   <div class="ui header">Geo Location</div>
-                    <div class="ui two fields">
-                     
-                     <div class="field">
-                         <div class="ui text box">
-                            <label>Longitude </label>
-                            <input value="{{property.long}}" type="text"  name="long" placeholder="0.000000" accept="integer/*" maxlength="20">
-                        </div>
-                    </div>
-
-                     <div class="field">
-                        <div class="ui text box">
-                            <label>Latitude </label>
-                            <input value="{{property.lat}}" type="text"  name="lat" placeholder="0.000000" accept="integer/*" maxlength="20">
-                        </div>
-                      </div>
-                    </div>
-                  
-   
-           <button class="ui blue submit button"> Back </button>
-        </form>
-        {{> error}}
-      
+<div class="ui card">
+  <div class="image">
+    <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1587422142/icons/house-orange.png">
+ 
+  </div>
+  <div class="content">
+    <div class="header">{{property.eircode}}
+    <div class="meta">
+      <span class="date">{{property.address}}</span>
     </div>
     </div>
+    <div class="description">
+    <p>  {{ property.comment }}</p>
+    </div>
+  <div class="ui divider"></div>
+  <div class="extra content">
+   <a class="ui image label">
+    <i class="pin icon"></i>
+    {{property.lat}} /{{property.long}}
+    </a>
+  </div>
+</div>
+ <button class="ui fluid large submit button"><a href="/report">  <i class="ui return icon"> </i>Back </a></button>
+{{> error}}
+</div>
+
+
+        
+ 
 
 </section>

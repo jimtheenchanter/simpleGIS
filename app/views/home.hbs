@@ -1,16 +1,19 @@
 
 
-
-<section class="ui raised segment">
-{{#if user.admin}}
-{{> adminmenu _id="home" }}
-{{> propertylist }}
-{{else}}
- {{> mainmenu _id="home"}}
- {{> dashboard}}
-{{/if}} 
+    {{#if user.admin}}
+         {{> adminmenu _id="home" }}
+         {{> propertylist }}
+    {{else}}
+         {{> mainmenu _id="home"}}
+         <div class="menu-pane">
+         {{> dashboard}}
+         </div>
+         <div class="main">
+         {{> mapreport }}     
+         </div>
+    {{/if}} 
         
  
 
 
-</section>
+

@@ -278,8 +278,6 @@ h4 {
   background-color: var(--orangina);
   opacity: .7;
   max-width: 100%!important;
-  /* color: darkslategray!important; */
-  /* opacity: 100%!important; */
   border-radius: 10px;
   border-style: solid;
   border-width: thin;
@@ -294,8 +292,16 @@ h4 {
 
 .fluid.ui.button:hover {
  opacity: 1;
+
  }
 
+ /* logo to overlay on map */
+ #logo-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 2rem;
+  right: 2rem;
+ }
 
 .start-button {
     /* color: rgb(244, 244, 244)!important; */
@@ -309,24 +315,23 @@ h4 {
  .ui.huge.button  {
     /* float: center; */
     text-align: center;
+    background-color: var(--greylite);
+    border-style: solid;
+    border-color: var(--greylite);
+    color: var(--orangina)!important;
+    
+  }
+
+  .ui.huge.button:hover  {
+    /* float: center; */
+    text-align: center;
     background-color: transparent;
     border-style: solid;
     border-color: var(--greylite);
     color: var(--greylite)!important;
   }
 
-  .ui.huge.button:hover  {
-    /* float: center; */
-    text-align: center;
-    background-color: var(--greylite);
-    border-style: solid;
-    border-color: var(--greylite);
-    color: var(--orangina)!important;
-  }
 
-  .ui.huge.button:visited  { 
-    color: var(--greylite)!important;
-  }
 
  .column {
    display: flex;
@@ -515,9 +520,11 @@ input {
     /* padding: 2rem; */
     border-color: white;
     border-width: medium;
+    z-index: 1;
 }
 
 .map-wrapper {
+  position: relative;
   width: 100%;
   border-width: 4px;
   border-style: solid;
@@ -532,9 +539,7 @@ nav {
   float: right;
 }
 
-/* #comments {
-  height: 1rem!important;
-} */
+
 
 
 #note {

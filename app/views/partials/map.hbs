@@ -1,6 +1,9 @@
  <section>
 
  <div class="map-wrapper">
+   <div id="logo-overlay">
+     <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1589366111/SimpleGIS/logo-simplegis-grey150.png"/>
+   </div>
  <div id="mapid"></div>
  </div> 
 
@@ -14,10 +17,10 @@
           id: 'mapbox/streets-v11',
           accessToken:
            '{{ mapKey }} '
-        // 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
+     
          }).addTo(mymap);
 
-// arker.setLatLng(lat, lng);
+
 
 mymap.on('click', function(e) {
  var lat = e.latlng.lat;
@@ -31,13 +34,10 @@ mymap.on('click', function(e) {
 
 function onMapClick(e) {
          alert("You clicked the map at " + e.latlng);
-       new L.Marker(event.latlng, {color: 'red', draggable: false}).addTo(mymap);
-        
-          
-        } 
+                 
 
-        mymap.on('click', onMapClick     
-        );
+       mymap.on('click', onMapClick)};    
+    
   
   var greenIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',

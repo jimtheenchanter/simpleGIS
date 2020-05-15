@@ -29,7 +29,9 @@ https://codahale.com/how-to-safely-store-a-password/
 Boom:
 https://www.codota.com/code/javascript/classes/boom/Boom
 
-Certbot: https://certbot.eff.org/lets-encrypt/ubuntufocal-apache
+Certbot:
+https://certbot.eff.org/lets-encrypt/centosrhel7-other
+https://stackoverflow.com/questions/53545436/no-package-certbot-available
 
 handlebars Built in Helper
 https://handlebarsjs.com/guide/builtin-helpers.html

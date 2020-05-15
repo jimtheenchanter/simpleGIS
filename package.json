@@ -52,6 +52,11 @@
     "mocha": "^7.1.1",
     "prettier": "^1.19.1"
   },
+
+  "engines": {
+    "node": "12.14.1"
+  },
+
   "prettier": {
     "singleQuote": true,
     "printWidth": 120

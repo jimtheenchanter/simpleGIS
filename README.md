@@ -40,6 +40,7 @@ https://stackoverflow.com/questions/59690923/handlebars-access-has-been-denied-t
 
 Hapi:
 https://github.com/hapijs/hapi/issues/4017
+https://hueniverse.com/why-you-should-consider-hapi-6163689bd7c2
 
 Joi
 https://medium.com/@rossbulat/joi-for-node-exploring-javascript-object-schema-validation-50dd4b8e1b0f

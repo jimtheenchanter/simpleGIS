@@ -510,6 +510,7 @@ input {
 .form.header {
   color: var(--greylite);
 }
+
 .active.item {
   color: blue;
 }
@@ -517,7 +518,6 @@ input {
 #mapid {
     height: 80vh;
     width: 100%;
-    /* padding: 2rem; */
     border-color: white;
     border-width: medium;
     z-index: 1;

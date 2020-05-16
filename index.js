@@ -8,6 +8,7 @@ if (result.error) {
   process.exit(1);
 }
 
+
 const Hapi = require('@hapi/hapi');
 const utils = require('./app/api/utils.js');
 const fs = require('fs');
@@ -20,7 +21,6 @@ const server = Hapi.server({
 });
 
 require('./app/models/db');
-
 
 // start the synchronous server
 async function init() {

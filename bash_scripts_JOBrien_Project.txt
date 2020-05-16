@@ -1,6 +1,6 @@
 Launch WBS ami 
-Launch DBS ami
 
+==========================================
 
 # Install mongo DB on DB master instance
 sudo nano /etc/yum.repos.d/mongodb-org-4.0.repo
@@ -20,6 +20,8 @@ mkdir db
 #add this to user data
 sudo mongod -dbpath db --bind_ip_all
 
+=============================================
+
 #Install node on webserver master instance
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh
@@ -28,6 +30,7 @@ nvm install 10.15.3
 npm install hapi
 node index.js
 
+======================================================================
 
 # Download Hapi web app to web server
 curl https://codeload.github.com/wit-hdip-comp-sci-2018/donation-web/zip/donation.11.end -o donation.zip

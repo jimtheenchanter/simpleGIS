@@ -11,7 +11,7 @@ if (result.error) {
 
 const Hapi = require('@hapi/hapi');
 const utils = require('./app/api/utils.js');
-const fs = require('fs');
+const fs = require('fs'); // allow file transfer
 const server = Hapi.server({
   port: process.env.PORT || 3000,  //
   tls: {
@@ -26,7 +26,6 @@ require('./app/models/db');
 async function init() {
 // only  start the server if the plugin is successfully loaded
  await server.register(require('hapi-auth-jwt2'));
-//  await server.register(require('@hapi/boom'));
   await server.register(require('@hapi/cookie'));
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));

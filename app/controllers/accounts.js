@@ -30,13 +30,19 @@ const Accounts = {
     validate: {
       //  schema which defines rules that our fields must adhere to. 
       payload: Joi.object(  // must define a Joi object
-        {
-        firstName: Joi.string().regex(/^[A-Z][a-z]{2,}$/).required(),
+        { firstName: Joi.string()
+          .alphanum()
+          .min(1)
+          .max(25)
+          .required(),
+        // firstName: Joi.string().regex(/^[A-Z][a-z]{2,}$/).required(),
+
         lastName: Joi.string().required(),
         email: Joi.string()
           .email()
           .required(), 
-        password: Joi.string().min(6).required()
+        password: Joi.string().min(6).required(),
+        repeat_password: Joi.ref('password'),
         })
       ,
     options: {

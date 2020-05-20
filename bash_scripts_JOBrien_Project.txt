@@ -34,7 +34,13 @@ npm install hapi
 << create image of above>>
 
 git clone https://github.com/jimtheenchanter/simpleGIS.git
+cd /home/ec2-user/simpleGIS/npm a
 
+npm install
+
+sudo yum -y update
+
+npm i -D handlebars@4.5.0
 su - ec2-user -c 'cd simpleGIS; node index.js'
  
 node index.js
@@ -51,7 +57,28 @@ sudo yum -y update
 
 npm i -D handlebars@4.5.0
 
-=======================================================================
+// auto start node at launch config user data
+#!/bin/bash
+su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
+
+==================================================================
+
+#first ssh connection
+ssh -t -o StrictHostKeyChecking=no -i ~/jimobrienkey2.pem ec2-user@
+
+
+=====
+
+Allow inbound traffic to TCP ports 22, 80, 443, 3000 and 3443.
+
+
+
+
+
+
+
+
+=========
 #causing cpu load on the servers
 nano cpu100
 
@@ -72,13 +99,13 @@ auto start node at launch config user data
 su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
 
 #first ssh connection
-ssh -t -o StrictHostKeyChecking=no -i ~/jobrien_key.pem ec2-user@
+ssh -t -o StrictHostKeyChecking=no -i ~/jimobrienkey2.pem ec2-user@
 
 #subsequent connections
 ssh -i ~/20082197Demo.pem ec2-user@54.229.66.174
 
 #copy pem key to webserver (UNSAFE - for demo ssh purposes only)
-.kry
+scp -i ~/jimobrienkey2.pem check_webserver.py ec2-user@"+ ipaddress +
 
 #Enter the following command to	have the system	always start the web server following a reboot:
 sudo systemctl enable httpd

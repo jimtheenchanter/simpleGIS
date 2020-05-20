@@ -1,6 +1,6 @@
 'use strict';
 
-// require('dotenv').config();
+// initiate dotenv for accessing environment variables
 const dotenv = require('dotenv');
 const result = dotenv.config();
 if (result.error) {
@@ -15,8 +15,8 @@ const fs = require('fs'); // allow file transfer
 const server = Hapi.server({
   port: process.env.PORT || 3000,  //
   tls: {
-    key: fs.readFileSync('private/webserver.key'),
-    cert: fs.readFileSync('private/webserver.crt')
+    key: fs.readFileSync('private/jobserver.key'),
+    cert: fs.readFileSync('private/jobserver.crt')
 }
 });
 

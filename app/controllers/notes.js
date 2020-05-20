@@ -10,9 +10,7 @@ const Notes = {
             // const properties = await Property.find().populate('agent')
             const user = await User.findById(id);
             const notes = await Note.find().populate('agent');
-            // .populate('agent')
-            // const properties = await Property.find().populate();
-            // const mapAPIKey = process.env.mapKey;
+          
        return h.view('notemain', { 
           title: 'Add a Note',
           user: user,

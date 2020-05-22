@@ -24,7 +24,7 @@ Clone SimpleGIS.
 Install dependencies
 ``` npm install
 
-You must roll back to stable version of Handlebars
+You must roll back to this version of Handlebars
 ``` npm i -D handlebars@4.5.0
 
 
@@ -42,15 +42,19 @@ Create a .env file in the root folder
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+![SimpleGIS Dashboard](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187234/SimpleGIS/addareapage.jpg)
 
 ## Built With
 
-* Hapi
+* @Hapi
 * Handlebars
 * Semantic UI & Flexbox
 * OpenStreetMap
 * Leaflet.js
+* @boom
+* Bcrypt
+* MongoDB
+* JWT
 
 
 ## Versioning

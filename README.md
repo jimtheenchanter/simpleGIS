@@ -1,7 +1,7 @@
 
+![SimpleGIS Dashboard](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187234/SimpleGIS/addareapage.jpg)
 
 
-![SimpleGIS Splash](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187233/SimpleGIS/SimpleGIS-Design.jpg)
 
 ### See live demo at available at:
 https://34.243.39.210:3000
@@ -13,6 +13,8 @@ Note: You may get browser security warning due to self-signed certificate
 This Node.js app is built using the Hapi framework along with OpenStreetMap with Leaflet.js
 It allows users to register an account and start adding color coded markers to a map. You can also add polylines and polygons to enhance any project that brings people and places together. Designed to be useable by anyone from 8 - 80 years of age.
 
+
+
 ## Getting Started
 Using the map as an input tool you can draw markers with added information and as many polygon shapes or polyline routes as you want. Full list view with easy delete functions and added quick notes.
 
@@ -22,6 +24,9 @@ Needs Node version 12.15.1
 
 Clone SimpleGIS.
 Install dependencies
+
+![SimpleGIS Splash](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187233/SimpleGIS/SimpleGIS-Design.jpg)
+
 ``` npm install
 
 You must roll back to this version of Handlebars
@@ -42,7 +47,7 @@ Create a .env file in the root folder
 
 ## Deployment
 
-![SimpleGIS Dashboard](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187234/SimpleGIS/addareapage.jpg)
+
 
 ## Built With
 

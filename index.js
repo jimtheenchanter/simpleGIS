@@ -26,7 +26,7 @@ require('./app/models/db');
 async function init() {
 // only  start the server if the plugin is successfully loaded
  await server.register(require('hapi-auth-jwt2'));
-  await server.register(require('@hapi/cookie'));
+  await server.register(require('@hapi/cookie')); // to manage cookies
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));
   
@@ -39,31 +39,30 @@ async function init() {
     path: './app/views',
     layoutPath: './app/views/layouts',
     partialsPath: './app/views/partials',
-      layout: true,
+    layout: true,
     isCached: false,
     allowAbsolutePaths:true,
     allowInsecureAccess: true
 
   });
   
-
+// cookie management implementation
   server.auth.strategy('standard', 'cookie', {
     cookie: {
-    password: process.env.cookie_password,
+    password: process.env.cookie_password,  // password stored in as environment variable
     name: process.env.cookie_name,    
-    isSecure: false,
+    isSecure: true,
     ttl: 24 * 60 * 60 * 1000
   },
     redirectTo: '/' // prevent error if going to inaccessible page
-  
   });
 
-  
+ // authentication token strategy 
   server.auth.strategy('jwt', 'jwt', {
     key: process.env.jwt_password,
-    validate: utils.validate,
+    validate: utils.validate, // validate function from util API
     verifyOptions: { algorithms: ['HS256'] },
-  })
+  });
   
   server.auth.default({
     mode: 'required',
@@ -71,7 +70,7 @@ async function init() {
   });
 
   server.route(require('./routes'));
-  server.route(require('./routesapi'));
+  server.route(require('./routesapi')); // endpoints for testing and tertiary apps
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 }

@@ -1,93 +1,108 @@
-# simpleGIS
-The project aims to satisfy this need by providing a Simple GIS planning solution in the form of a web application whereby the user can create and edit multiple planned network routes on a live satellite map. Using multiple markers with latitude and longitude data to pinpoint junctions, nodes, etc. , this application will enable amateur users to create and export multiple grids as layers – depending on the size of the project. This will enable the community to have a greater foothold in the designing of the grid 
 
-## Launching the App
-To launch local database from console:
-`mongod --dbpath " ../path/to/db" `
 
-launch app:
-`node index.js`
-navigate
+
+
+
+.env required for Map API, database, Cookies
+
 
 ###
 
-https://secure-earth-93268.herokuapp.com/ | https://git.heroku.com/secure-earth-93268.git
-
-Array - add to blank
-https://www.w3resource.com/javascript-exercises/javascript-array-exercise-13.php
-
-AWS - Deploy Node App
-https://tutors-design.netlify.com/lab/wit-hdip-comp-sci-2018-devops.netlify.com/topic-10-Security/unit-2-node-deployment/book-1-Deploying-a-node-app/1-Installation
-
-https://medium.com/@nishankjaintdk/setting-up-a-node-js-app-on-a-linux-ami-on-an-aws-ec2-instance-with-nginx-59cbc1bcc68c
-
-https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
-
-BCrypt, How to safely store a password:
-https://codahale.com/how-to-safely-store-a-password/
-
-Boom:
-https://www.codota.com/code/javascript/classes/boom/Boom
-
-Certbot:
-https://certbot.eff.org/lets-encrypt/centosrhel7-other
-https://stackoverflow.com/questions/53545436/no-package-certbot-available
-
-handlebars Built in Helper
-https://handlebarsjs.com/guide/builtin-helpers.html
-handlebars fix for access denied.. error
-https://stackoverflow.com/questions/59690923/handlebars-access-has-been-denied-to-resolve-the-property-from-because-it-is
-
-Hapi:
-https://github.com/hapijs/hapi/issues/4017
-https://hueniverse.com/why-you-should-consider-hapi-6163689bd7c2
-
-Joi
-https://medium.com/@rossbulat/joi-for-node-exploring-javascript-object-schema-validation-50dd4b8e1b0f
-
-https://medium.com/@piotrkarpaa/handling-joi-validation-errors-in-hapi-17-26fc07448576
-
-How simplicity will Save GIS
-https://vimeo.com/106112939
-
-Leaflet Mapbox Polyline
-https://docs.mapbox.com/mapbox.js/example/v1.0.0/leaflet-draw/
-
-Leaflet:
-What Leaflet does: "Slippy" maps with tiled base layers, panning and zooming, and feature layers that you supply. It handles various basic tasks like converting data to map layers and mouse interactions, and it's easy to extend with plugins. It will also work well across most types of devices
-http://maptimeboston.github.io/leaflet-intro/
-
-mongo Stitch Android
-https://code.tutsplus.com/tutorials/how-to-use-mongodb-stitch-in-android-apps--cms-31877    
-
-
-Leaflet Polyline on click return array
-https://stackoverflow.com/questions/32564673/how-to-store-e-latlng-into-array-leaflet
-
-Leaflet: saving & restoring objects
-https://github.com/Leaflet/Leaflet.draw/issues/253
-
-Leaflet Edit polyline
-https://peter-thomson.com/leaflet-map-tutorial/map-track-editor4.html
-
-Node MVC
-https://www.sitepoint.com/node-js-mvc-application/
-
-KML in google maps
-https://developers.google.com/maps/documentation/javascript/kml
-
-Semantic UI
-https://semantic-ui.com/usage/layout.html
-http://learnsemantic.com/developing/customizing.html
-
-User Permissions
-https://stackoverflow.com/questions/43080150/handlebars-and-node-js-if-user-then-show-log-in-button
-
-Node.js Session Management
-https://pomcor.com/2018/06/25/login-session-maintenance-in-node-js-using-express-and-handlebars/
+Available at:
+https://34.243.39.210:3000
+Note: You may get browser security warning due to self-signed certificate
 
 
 
-CRUD Mongoose
-https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34
+# simpleGIS
+
+This Node.js app is built using the Hapi framework along with OpenStreetMap with Leaflet.js
+It allows users to register an account and start adding color coded markers to a map. You can also add polylines and polygons to enhance any project that brings people and places together. Designed to be useable by anyone from 8 - 80 years of age.
+
+## Getting Started
+Clone SimpleGIS.
+
+
+### Prerequisites
+
+Needs Node version 12.15.1
+Install dependencies
+``` npm install
+
+You must roll back to stable version of Handlebars
+``` npm i -D handlebars@4.5.0
+
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Create a .env file in the root folder
+
+``` cookie_name=simple-gis
+cookie_password=secretpasswordnotrevealedtoanyone
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
 

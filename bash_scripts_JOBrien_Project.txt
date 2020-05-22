@@ -25,25 +25,34 @@ sudo mongod -dbpath db --bind_ip_all
 #Install node on webserver master instance
 
 #!/bin/bash
+sudo yum -y update
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh
+sudo yum install git -y
 
-nvm install 10.15.3
-npm install hapi
+nvm install 12.14.1
+
+
 
 << create image of above>>
-
+sudo yum install git -y
 git clone https://github.com/jimtheenchanter/simpleGIS.git
-cd /home/ec2-user/simpleGIS/npm a
+cd /home/ec2-user/simpleGIS/
 
 npm install
-
-sudo yum -y update
+npm install @hapi/hapi
 
 npm i -D handlebars@4.5.0
-su - ec2-user -c 'cd simpleGIS; node index.js'
+
+//create AMI image of above
+//create launch config using AMI
+//create auto scaling group using launch config
+
+// auto start node at launch config user data
+#!/bin/bash
+sudo su - ec2-user -c 'cd simpleGIS; node index.js'
  
-node index.js
+https://3.249.194.255:3000
 
 ======================================================================
 
@@ -64,14 +73,15 @@ su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
 ==================================================================
 
 #first ssh connection
-ssh -t -o StrictHostKeyChecking=no -i ~/jimobrienkey2.pem ec2-user@
+ssh -t -o StrictHostKeyChecking=no -i ~/jimobrien_key.pem ec2-user@
 
-
+#copy up file from pi to aws instamce
+scp -i ~/jobrien_key.pem .env ec2-user@52.48.83.1:/home/ec2-user/simpleGIS/
 =====
 
 Allow inbound traffic to TCP ports 22, 80, 443, 3000 and 3443.
 
-
+create a new security group that allows access to TCP port 3000 as well as 22/SSH
 
 
 

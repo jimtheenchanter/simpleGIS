@@ -34,7 +34,6 @@ addNote: {
       var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
       const newNote = new Note({
         comment: data.comment,
-        // date: Date.now(),
         date: date,
         agent: user._id
       });

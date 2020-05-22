@@ -10,7 +10,9 @@ module.exports = [
   // routes to handle account functions
 { method: 'GET', path: '/', config: Accounts.index },
 { method: 'GET', path: '/signup', config: Accounts.showSignup},
-{ method: 'GET', path: '/login', config: Accounts.showLogin },
+{ method: 'GET', 
+path: '/login', 
+config: Accounts.showLogin },
 { method: 'GET', path: '/logout', config: Accounts.logout },
 { method: 'POST', path: '/signup', config: Accounts.signup },
 { method: 'POST', path: '/adduser', config: Accounts.adduser },

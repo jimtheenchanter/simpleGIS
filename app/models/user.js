@@ -12,9 +12,9 @@ const userSchema = new Schema({
   password: String,
   admin: Boolean,
   date: String,
-
     
 });
+
 
 userSchema.statics.findByEmail = function(email) {
     return this.findOne({ email : email});
@@ -27,20 +27,5 @@ userSchema.methods.comparePassword = async function(userPassword) {
   };
 
 
-
-
-  // new method
-// userSchema.statics.findById = function(id) {
-//   return this.findOne({id : id})
-// }
-  
-// userSchema.methods.comparePassword = function(userPassword) {
-//   const isMatch = this.password === userPassword;
-//   if (!isMatch) {
-//     const message = 'Password mismatch';
-//     throw new Boom(message);
-//   }
-//   return this;
-// };
 
 module.exports = Mongoose.model('User', userSchema);

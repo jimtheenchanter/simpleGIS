@@ -16,7 +16,7 @@ exports.decodeToken = function (token) {
   var userInfo = {};
   try {
     var decoded = jwt.verify(token, process.env.jwt_password,);
-    userInfo.userId = decoded.id;
+    userInfo.userId = decoded.id;  // get the userID and email
     userInfo.email = decoded.email;
   } catch (e) {
   }

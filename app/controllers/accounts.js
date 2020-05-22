@@ -8,6 +8,7 @@ const Polygon = require('../models/polygon');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Joi = require('joi');
+const utils = require('./utils.js');
 
 
 const Accounts = {
@@ -35,7 +36,7 @@ const Accounts = {
           .min(1)
           .max(25)
           .required(),
-        // firstName: Joi.string().regex(/^[A-Z][a-z]{2,}$/).required(),
+        
 
         lastName: Joi.string().required(),
         email: Joi.string()
@@ -164,7 +165,7 @@ const Accounts = {
 
   login: {
     auth: false,
-    validate: {
+    validate: { //validation rules
       payload: Joi.object( {
         email: Joi.string()
           .email()
@@ -193,22 +194,17 @@ const Accounts = {
              const message = 'Email address is not registered';
              throw Boom.unauthorized(message);
            }
-            // user.comparePassword(password);
-            if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+              if (!await user.comparePassword(password)) {        
               const message = 'Password mismatch';
               throw Boom.unauthorized(message);
-            } else {
-
-
-            request.cookieAuth.set({ id: user.id });
-           
+            }   
+            else {
+                      
         return h.redirect('/home', {
           title: 'Home',
           user: user
 
-        });
-      }
-      } 
+        });      }  } 
       catch (err) {
         // Refresh login throwing boom error
         return h.view('login', { errors: [{ message: err.message }] });
@@ -259,11 +255,9 @@ const Accounts = {
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
         const hash = await bcrypt.hash(userEdit.password, saltRounds); 
-
         user.firstName = userEdit.firstName;
         user.lastName = userEdit.lastName;
         user.email = userEdit.email;
-        // user.password = userEdit.password;
         user.password = hash;
         await user.save();
           console.log("Update successful")

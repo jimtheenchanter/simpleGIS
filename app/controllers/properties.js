@@ -134,11 +134,11 @@ report: {
 addProperty: {
   handler: async function(request, h) {
     try {
-      const id = request.auth.credentials.id;
-      const user = await User.findById(id);
-      const data = request.payload;
-      const newProperty = new Property({
-        eircode: data.eircode,
+      const id = request.auth.credentials.id; // read credentials from cookie
+      const user = await User.findById(id); // define current user as that of id
+      const data = request.payload; // form payload as data
+      const newProperty = new Property({ // create new Property object 
+        eircode: data.eircode,           //.. with this data 
         address: data.address,
         long: data.long,
         lat: data.lat,
@@ -146,7 +146,7 @@ addProperty: {
         comment: data.comment,
         agent: user._id
       });
-      await newProperty.save();
+      await newProperty.save(); // save the property
       return h.redirect('/home');
     } catch (err) {
       return h.view('main', { errors: [{ message: err.message }] });
@@ -159,12 +159,11 @@ deleteProperty: {
   handler: async function(request, h) {
        const property = await Property.deleteOne({ _id: request.params.id });
       if (property) {
-                  return h.redirect('/report');
+        return h.redirect('/report');
       }
        return Boom.notFound('id not found');
   }
 },
-
 
 showProperty : {
   handler: async function(request, h) {
@@ -181,7 +180,7 @@ showProperty : {
     }
   }
 },
-
+// this function keeps throwing error so is unused :(
 updateProperty: {
   handler: async function(request, h) {
     try {

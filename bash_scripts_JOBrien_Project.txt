@@ -67,16 +67,16 @@ sudo yum -y update
 npm i -D handlebars@4.5.0
 
 // auto start node at launch config user data
-#!/bin/bash
-su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
+#!/bin/bashcd /
+su - ec2-user -c 'cd directory; node index.js'
 
 ==================================================================
 
 #first ssh connection
-ssh -t -o StrictHostKeyChecking=no -i ~/jimobrien_key.pem ec2-user@
+ssh -t -o StrictHostKeyChecking=no -i ~/_key.pem ec2-user@
 
 #copy up file from pi to aws instamce
-scp -i ~/jobrien_key.pem .env ec2-user@52.48.83.1:/home/ec2-user/simpleGIS/
+scp -i ~/_key.pem .env ec2-user@52.48.83.1:/home/ec2-user/simpleGIS/
 =====
 
 Allow inbound traffic to TCP ports 22, 80, 443, 3000 and 3443.
@@ -109,10 +109,10 @@ auto start node at launch config user data
 su - ec2-user -c 'cd donation-web-donation.11.end; node index.js'
 
 #first ssh connection
-ssh -t -o StrictHostKeyChecking=no -i ~/jimobrienkey2.pem ec2-user@
+ssh -t -o StrictHostKeyChecking=no -i ~/key2.pem ec2-user@
 
 #subsequent connections
-ssh -i ~/20082197Demo.pem ec2-user@54.229.66.174
+ssh -i ~/Demo.pem ec2-user@54.229.66.174
 
 #copy pem key to webserver (UNSAFE - for demo ssh purposes only)
 scp -i ~/jimobrienkey2.pem check_webserver.py ec2-user@"+ ipaddress +

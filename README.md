@@ -46,7 +46,8 @@ Create a .env file in the root folder
 ``` mapKey=
 
 ## Deployment
-
+Serve on localhost:3000
+TLS security https://
 
 
 ## Built With

@@ -20,14 +20,12 @@ const Properties = {
               try{ // pass in the data for the map
                 const id = request.auth.credentials.id;
                 const user = await User.findById(id);
-                // const properties = await [Property.findAll];
                 const properties = await Property.find().populate('agent');
                 const polylines = await Polyline.find().populate('agent');
                 const polygons = await Polygon.find().populate('agent');
                 const notes = await Note.find();
                 const mapAPIKey = process.env.mapKey;
-                // const totalProperties = properties.count();
-                const today = new Date();
+                const today = new Date(); // to display current date - unused
                 var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
             return h.view('home', { 
               title: 'Dashboard',
@@ -198,7 +196,8 @@ updateProperty: {
       return h.view('main', { errors: [{ message: err.message }] });
     }
   }
-}}
+}
+}
 ;
 
 module.exports = Properties;

@@ -82,5 +82,5 @@ const Polylines = {
   },
 
 
-  }
+}
 module.exports = Polylines;

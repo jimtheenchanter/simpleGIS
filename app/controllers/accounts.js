@@ -8,7 +8,7 @@ const Polygon = require('../models/polygon');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Joi = require('joi');
-const utils = require('./utils.js');
+const utils = require('../api/utils.js');
 
 
 const Accounts = {
@@ -70,8 +70,11 @@ const Accounts = {
           throw Boom(message);
         }
 
-        const hash = await bcrypt.hash(payload.password, saltRounds); // 
-        // var d = Date(Date.now()); 
+        //hashing function to hash the password with 256 bit encryption and
+        //add salt rounds
+        const hash = await bcrypt.hash(payload.password, saltRounds); 
+
+        // geerate sign up date
         var d = new Date();
         var a = d.toDateString();
 
@@ -199,7 +202,7 @@ const Accounts = {
               throw Boom.unauthorized(message);
             }   
             else {
-                      
+              request.cookieAuth.set({ id: user.id } );      
         return h.redirect('/home', {
           title: 'Home',
           user: user

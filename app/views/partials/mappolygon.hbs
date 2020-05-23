@@ -1,11 +1,11 @@
- <section>
-  
-  <div class="map-wrapper">
+ <section class= "ui section">
+   <div class="map-wrapper">
     <div id="logo-overlay">
      <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1589366111/SimpleGIS/logo-simplegis-grey150.png"/>
    </div>
    <div id="mapid"></div>
-  </div>  
+  </div>
+
   <script type="text/javascript">
         var mymap = L.map('mapid').setView([52.346425, -7.321243], 18);
         // create a base layer of map tiles
@@ -15,9 +15,10 @@
               maxZoom: 20,
           id: 'mapbox/satellite-v9',
           accessToken: 
-          '{{ mapKey }} '
-                  
+          '{{ mapKey }} '         
          }).addTo(mymap);
+
+
 
 
 // User clicks the map which adds coords to make polygon array
@@ -34,16 +35,11 @@ mymap.on('click', function(event) {
 });
 
 </script> 
-{{!-- Iterate through the properties to add markers --}}
- {{#each properties}}
-    <script>    
-       L.marker([{{lat}}, {{long}}], {icon: {{color}} }).addTo(mymap);
-    </script>
-  {{/each}} 
-    
-    {{#each polylines}}
-    <script>
 
+ 
+    
+{{#each polylines}}
+   <script>
       // create an array made up of lat lngs
     arr = [];
     {{#each latlng}}

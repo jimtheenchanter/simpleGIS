@@ -1,4 +1,4 @@
- <section>
+ <section class="ui section">
   <div class="map-wrapper">
   <div id="logo-overlay">
      <img src="https://res.cloudinary.com/jimtheenchanter/image/upload/v1589366111/SimpleGIS/logo-simplegis-grey150.png"/>
@@ -8,14 +8,16 @@
  
     
  <script type="text/javascript">
-        var mymap = L.map('mapid').setView([52.345944, -7.321977], 15);
+        var mymap = L.map('mapid').setView([52.345944, -7.321977], 16);
         // create a base layer of map tiles
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
         {
           attribution: '',
-              maxZoom: 18,
+              maxZoom: 16,
+              minZoom: 16,
           id: 'mapbox/streets-v11',
-          accessToken: 'pk.eyJ1IjoiamltdGhlZW5jaGFudGVyIiwiYSI6ImNrNXhveWRhdTB5M3QzcW4zM2pmMHMxNnkifQ.ho-Px1mJyDlzc5JD9vgcFQ'
+          accessToken: 
+          '{{ mapKey }} '
          }).addTo(mymap);
 
 var greenIcon = new L.Icon({
@@ -51,31 +53,30 @@ var greenIcon = new L.Icon({
    <script>    
    L.marker([ {{lat}}, {{long}}], {icon: {{color}} } ).addTo(mymap).bindPopup(` {{eircode}} <br> {{address}} `);
     </script>
-
   {{/each}} 
-    {{#each polylines}}
-    <script>
 
-      // create an array made up of lat lngs
-    arr = [];
-    {{#each latlng}}
-        console.log("{{this.lat}}  {{this.lng}}")
-        mini_arr = [];
-        mini_arr.push({{this.lat}});
-        mini_arr.push({{this.lng}});
-        arr.push(mini_arr);
-    {{/each}}
-      console.log(arr, "latlng array passed")
-      test = new L.polyline(arr);
-      test.addTo(mymap)
+  {{#each polylines}}
+   <script>
+
+     // create an array made up of lat lngs
+   arr = [];
+   {{#each latlng}}
+       console.log("{{this.lat}}  {{this.lng}}")
+       mini_arr = [];
+       mini_arr.push({{this.lat}});
+       mini_arr.push({{this.lng}});
+       arr.push(mini_arr);
+   {{/each}}
+     console.log(arr, "latlng array passed")
+     test = new L.polyline(arr);
+     test.addTo(mymap)
   L.polyline(arr,  {color: 'orange', title: '{{title}}'}).addTo(mymap).bindPopup(` {{title}} <br> {{agent.lastName}}  `);
     </script>
   {{/each}}
 
 {{#each polygons}}
     <script>
-
-      // create an array made up of lat lngs
+ // create an array made up of lat lngs
     arr = [];
     {{#each latlng}}
         console.log("{{this.lat}}  {{this.lng}}")
@@ -91,9 +92,6 @@ var greenIcon = new L.Icon({
     </script>
   {{/each}}
 
-
-
-{{!-- </script> --}}
 
 </section>
 

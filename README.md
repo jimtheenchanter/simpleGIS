@@ -25,7 +25,7 @@ Needs Node version 12.15.1
 Clone SimpleGIS.
 Install dependencies
 
-![SimpleGIS Splash](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187233/SimpleGIS/SimpleGIS-Design.jpg)
+![SimpleGIS Splash](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590271382/SimpleGIS/technical-system-overview.jpg)
 
 ``` npm install
 
@@ -46,7 +46,7 @@ Create a .env file in the root folder
 ``` mapKey=
 
 ## Deployment
-Serve on localhost:3000
+Serve on <localhost>:3000
 TLS security https://
 
 

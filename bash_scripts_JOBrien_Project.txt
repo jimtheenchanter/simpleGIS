@@ -67,16 +67,18 @@ sudo yum -y update
 npm i -D handlebars@4.5.0
 
 // auto start node at launch config user data
-#!/bin/bashcd /
-su - ec2-user -c 'cd directory; node index.js'
+#!/bin/bash
+sudo su - ec2-user -c 'cd /home/ec-2user/simpleGIS; node index.js'
 
 ==================================================================
 
 #first ssh connection
-ssh -t -o StrictHostKeyChecking=no -i ~/_key.pem ec2-user@
+ssh -t -o StrictHostKeyChecking=no -i ~/jimobrienKey2.pem ec2-user@
+
 
 #copy up file from pi to aws instamce
 scp -i ~/_key.pem .env ec2-user@52.48.83.1:/home/ec2-user/simpleGIS/
+scp -i ~/jimobrienKey2.pem ~/home/pi/project_computer_science/ .env ec2-user@54.154.183.77:/home/ec2-user/simpleGIS/
 =====
 
 Allow inbound traffic to TCP ports 22, 80, 443, 3000 and 3443.

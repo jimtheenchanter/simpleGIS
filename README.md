@@ -3,8 +3,8 @@
 
 
 
-### See live demo at available at:
-https://3.249.245.151:3000/
+### Demo available at AWS:
+https://52.211.229.173:3000/
 Note: You may get browser security warning due to self-signed certificate
 
 

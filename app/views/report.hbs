@@ -1,11 +1,12 @@
-{{> mainmenu _id="report"}}
+{{!-- {{> mainmenu _id="report"}} --}}
 
 <section class="ui raised segment">
 
 {{#if user.admin}}
+ {{> adminmenu _id="report" }}
 {{> adminpropertylist }}
 {{else}}
-
+{{> mainmenu _id="report"}}
 {{> propertylist }}
 {{/if}}
 

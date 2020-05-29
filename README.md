@@ -7,6 +7,8 @@
 https://52.211.229.173:3000/
 Note: You may get browser security warning due to self-signed certificate
 
+### Walk through available on YouTube:
+https://youtu.be/hQUszAIp6VY 
 
 # simpleGIS
 

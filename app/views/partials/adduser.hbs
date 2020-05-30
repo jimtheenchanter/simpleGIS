@@ -22,13 +22,14 @@
             <label>Password</label>
             <input type="password" name="password">
           </div>
-          <div class="field">
-            <label>Account type</label>
-            <select class="ui dropdown" name="admin" id="admin"  aria-placeholder="Account type">
-                   <option value="false" name="false" id="false">User</option>
-                   <option value="true" name="true" id="true">Admin</option>
-            </select>
-          </div>
+          {{!-- <div class="field">
+            <label>Account type</label><br>
+            <label for="user"> Agent</label>
+            <input type="radio" id="user" name="false" value="false" ><br>
+            <label for="user"> Administrator</label>
+            <input type="radio" id="admin" name="true" value="true">
+           
+          </div> --}}
           <button class="ui blue submit button">Submit</button>
         </form>
         {{> error}}

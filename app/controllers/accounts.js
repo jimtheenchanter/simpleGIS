@@ -122,7 +122,7 @@ const Accounts = {
 // handler to invoke of one or more of the fields fails the validation
     failAction: function(request, h, error) {
         return h
-          .view('signup', {
+          .view('addusermain', {
             title: 'Sign up error',
             errors: error.details
           })
@@ -133,13 +133,13 @@ const Accounts = {
 
     handler: async function(request, h) {
       try {
-        const payload = request.payload; // accepts data from form
+        const payload = request.payload; // accepts data from form             
         let user = await User.findByEmail(payload.email); //declares user
         if (user) {  // check if user email already exists
           const message = 'Email address is already registered';
           throw new Boom.badRequest(message);
         }
-
+   
         const hash = await bcrypt.hash(payload.password, saltRounds); // 
 
         const newUser = new User({ //create new user based on user model
@@ -147,12 +147,12 @@ const Accounts = {
           lastName: payload.lastName,
           email: payload.email,
           password: hash,
-          admin: payload.admin,
           date: Date.now(),
         });
         user = await newUser.save(); // save newuser data as user
         // request.cookieAuth.set({ id: user.id });  // set a cookie based on user id
-        return h.redirect('addusermain'); // redirect to login screen
+        return h.redirect('addusermain'); // redirect to adduser screen
+        
       } catch (err) {
         return h.view('addusermain', { errors: [{ message: err.message }] });
       }
@@ -281,7 +281,6 @@ const Accounts = {
       // const polygons = await Polygon.find().populate('agent');
       // const id = request.auth.credentials.id;
       const users = await User.find();  
-    // pass the property data into the view 
       return h.view('showusers', {
         title: 'All registered Users',
         users: users

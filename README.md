@@ -4,7 +4,9 @@
 
 
 ### Demo available at AWS:
-https://52.211.229.173:3000/
+https://52.211.229.173:3000/ (Personal account)
+and
+https://54.154.18.211:3000/ (Educational account)
 Note: You may get browser security warning due to self-signed certificate
 
 ### Walk through available on YouTube:

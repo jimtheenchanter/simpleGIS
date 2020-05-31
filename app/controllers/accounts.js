@@ -108,7 +108,7 @@ const Accounts = {
       //  schema which defines rules that our fields must adhere to. 
       payload: Joi.object(  // must define a Joi object
         {
-        firstName: Joi.string().regex(/^[A-Z][a-z]{2,}$/).required(),
+        firstName: Joi.string().alphanum().min(1).max(25).required(),
         lastName: Joi.string().required(),
         email: Joi.string()
           .email()
@@ -133,7 +133,8 @@ const Accounts = {
 
     handler: async function(request, h) {
       try {
-        const payload = request.payload; // accepts data from form             
+        const payload = request.payload; // accepts data from form     
+           
         let user = await User.findByEmail(payload.email); //declares user
         if (user) {  // check if user email already exists
           const message = 'Email address is already registered';
@@ -147,6 +148,7 @@ const Accounts = {
           lastName: payload.lastName,
           email: payload.email,
           password: hash,
+          admin: true,
           date: Date.now(),
         });
         user = await newUser.save(); // save newuser data as user

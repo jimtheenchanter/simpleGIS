@@ -3,7 +3,7 @@
     <div class="ui ten wide column">
       <div class="ui stacked fluid form segment">
         <form action="/adduser" method="POST">
-          <h3 class="ui header">Add new User</h3>
+          <h3 class="ui header">Add an Administrator</h3>
           <div class="two fields">
             <div class="field">
               <label>First Name</label>
@@ -22,14 +22,7 @@
             <label>Password</label>
             <input type="password" name="password">
           </div>
-          {{!-- <div class="field">
-            <label>Account type</label><br>
-            <label for="user"> Agent</label>
-            <input type="radio" id="user" name="false" value="false" ><br>
-            <label for="user"> Administrator</label>
-            <input type="radio" id="admin" name="true" value="true">
-           
-          </div> --}}
+         
           <button class="ui blue submit button">Submit</button>
         </form>
         {{> error}}

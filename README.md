@@ -3,9 +3,6 @@
 
 
 
-### Demo available at AWS:
-https://52.210.34.143:3000/ 
-Note: You may get browser security warning due to self-signed certificate
 
 ### Walk through available on YouTube:
 https://youtu.be/hQUszAIp6VY 

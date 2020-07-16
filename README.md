@@ -2,7 +2,8 @@
 ![SimpleGIS Dashboard](https://res.cloudinary.com/jimtheenchanter/image/upload/v1590187234/SimpleGIS/addareapage.jpg)
 
 
-
+## Working version available on AWS - may get self-signed certificate warning 
+https://18.202.219.144:3000/ 
 
 ### Walk through available on YouTube:
 https://youtu.be/hQUszAIp6VY 
